@@ -1,7 +1,7 @@
 'use client'
 import { useRef, ReactNode } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { weddingData } from '@/data/wedding-data'
+import { useWeddingData } from '@/context/WeddingDataContext'
 import { formatShortDate } from '@/lib/utils'
 import { MessageCircle } from 'lucide-react'
 
@@ -20,6 +20,7 @@ function GlassCard({ children, className = '' }: { children: ReactNode; classNam
 }
 
 export default function TimelinePage() {
+  const weddingData = useWeddingData()
   const containerRef = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({ target: containerRef })
 

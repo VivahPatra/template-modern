@@ -1,13 +1,14 @@
 'use client'
 import { motion } from 'framer-motion'
 import { MessageCircle, Phone } from 'lucide-react'
-import { weddingData } from '@/data/wedding-data'
+import { useWeddingData } from '@/context/WeddingDataContext'
 import { fadeUp, scaleIn, staggerContainer } from '@/lib/animations'
 import LotusDivider from '@/components/ui/LotusDivider'
 import PichwaiCorner from '@/components/ui/PichwaiCorner'
 import AnimatedLotus from '@/components/ui/AnimatedLotus'
 
 export default function RSVPSection() {
+  const weddingData = useWeddingData()
   const whatsapp = `https://wa.me/${weddingData.rsvp.whatsappNumber}?text=${encodeURIComponent(weddingData.rsvp.message)}`
 
   return (

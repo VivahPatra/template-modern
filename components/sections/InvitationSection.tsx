@@ -1,11 +1,12 @@
 'use client'
 import { motion } from 'framer-motion'
-import { weddingData } from '@/data/wedding-data'
+import { useWeddingData } from '@/context/WeddingDataContext'
 import { fadeUp, scaleIn, staggerContainer } from '@/lib/animations'
 import LotusDivider from '@/components/ui/LotusDivider'
 import PichwaiCorner from '@/components/ui/PichwaiCorner'
 
 export default function InvitationSection() {
+  const weddingData = useWeddingData()
   return (
     <section id="invitation" className="py-28 px-6" style={{ background: 'var(--color-surface)' }}>
       <div className="max-w-3xl mx-auto">

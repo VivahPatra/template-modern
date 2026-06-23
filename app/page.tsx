@@ -5,12 +5,13 @@ import CustomCursor from '@/components/layout/CustomCursor'
 import LoadingScreen from '@/components/layout/LoadingScreen'
 import FloatingFABs from '@/components/layout/FloatingFABs'
 import TimelinePage from '@/components/TimelinePage'
+import { WeddingDataProvider } from '@/context/WeddingDataContext'
 
 export default function Page() {
   const [loaded, setLoaded] = useState(false)
 
   return (
-    <>
+    <WeddingDataProvider>
       <CustomCursor />
       <AnimatePresence>
         {!loaded && <LoadingScreen key="loading" onComplete={() => setLoaded(true)} />}
@@ -21,6 +22,6 @@ export default function Page() {
           <TimelinePage />
         </>
       )}
-    </>
+    </WeddingDataProvider>
   )
 }
