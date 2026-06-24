@@ -1,6 +1,7 @@
 'use client'
 import { motion } from 'framer-motion'
 import { useWeddingData } from '@/context/WeddingDataContext'
+import { formatShortDate } from '@/lib/utils'
 import { fadeUp, scaleIn, staggerContainer } from '@/lib/animations'
 import LotusDivider from '@/components/ui/LotusDivider'
 import PichwaiCorner from '@/components/ui/PichwaiCorner'
@@ -96,7 +97,7 @@ export default function InvitationSection() {
             </p>
             <LotusDivider className="my-8" />
             <p className="font-sans text-sm tracking-widest uppercase" style={{ color: 'var(--color-accent)', opacity: 0.7 }}>
-              20 December 2026
+              {formatShortDate(weddingData.weddingDate)}
             </p>
           </div>
         </motion.div>
