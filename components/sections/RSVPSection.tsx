@@ -29,7 +29,7 @@ export default function RSVPSection() {
             ✦ &nbsp; Your Presence &nbsp; ✦
           </motion.p>
           <motion.h2 variants={fadeUp} className="font-display shimmer-text" style={{ fontSize: 'clamp(2.2rem, 5vw, 3.5rem)' }}>
-            RSVP
+            {weddingData.rsvpHeading || 'RSVP'}
           </motion.h2>
           <LotusDivider className="mt-6" />
         </motion.div>
@@ -45,10 +45,10 @@ export default function RSVPSection() {
           <PichwaiCorner size={52} flip={{ x: true, y: true }} className="absolute bottom-0 right-0" />
 
           <p className="font-serif text-base leading-relaxed mb-3" style={{ color: 'var(--color-muted)' }}>
-            We joyfully request the honour of your presence at our wedding celebration.
+            {weddingData.rsvpText || 'We joyfully request the honour of your presence at our wedding celebration.'}
           </p>
           <p className="font-sans text-sm mb-8" style={{ color: 'var(--color-accent)', opacity: 0.7 }}>
-            Please RSVP by {weddingData.rsvp.deadline}
+            Please RSVP by {weddingData.rsvpDeadline || weddingData.rsvp.deadline}
           </p>
 
           <div className="flex justify-center">

@@ -16,6 +16,7 @@ interface EditorEvent {
   venueAddress: string
   venueMapLink?: string
   description?: string
+  image?: string
   color: string
 }
 
@@ -43,7 +44,13 @@ interface EditorPayload {
   weddingDate?: string
   hashtag?: string
   tagline?: string
+  heroSubtitle?: string
+  invitationHeading?: string
+  invitationSubtitle?: string
+  invitationBlessing?: string
   invitationText?: string
+  rsvpHeading?: string
+  rsvpText?: string
   heroImage?: string
   bridePhoto?: string
   groomPhoto?: string
@@ -71,7 +78,14 @@ function mapEditorToConfig(d: EditorPayload): WeddingConfig {
     weddingDate: d.weddingDate ? new Date(d.weddingDate) : defaultData.weddingDate,
     hashtag: d.hashtag || defaultData.hashtag,
     tagline: d.tagline || defaultData.tagline,
+    heroSubtitle: d.heroSubtitle || defaultData.heroSubtitle,
+    invitationHeading: d.invitationHeading || defaultData.invitationHeading,
+    invitationSubtitle: d.invitationSubtitle || defaultData.invitationSubtitle,
+    invitationBlessing: d.invitationBlessing || defaultData.invitationBlessing,
     invitationText: d.invitationText || defaultData.invitationText,
+    rsvpHeading: d.rsvpHeading || defaultData.rsvpHeading,
+    rsvpText: d.rsvpText || defaultData.rsvpText,
+    rsvpDeadline: d.rsvpDeadline || defaultData.rsvpDeadline,
     heroImage: d.heroImage || defaultData.heroImage,
     events: d.events && d.events.length > 0
       ? d.events.map((e): WeddingEvent => ({
@@ -82,7 +96,7 @@ function mapEditorToConfig(d: EditorPayload): WeddingConfig {
           time: e.time,
           venue: e.venue,
           venueAddress: e.venueAddress,
-          image: undefined,
+          image: e.image || undefined,
           color: e.color,
           description: e.description,
         }))

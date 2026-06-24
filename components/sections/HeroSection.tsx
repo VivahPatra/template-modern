@@ -87,7 +87,7 @@ export default function HeroSection() {
         <motion.p variants={fadeUp}
           className="font-sans text-[10px] tracking-[0.5em] uppercase mb-6"
           style={{ color: 'var(--color-muted)' }}>
-          You are invited to the wedding of
+          {weddingData.heroSubtitle || 'You are invited to the wedding of'}
         </motion.p>
 
         <motion.div variants={fadeUp} className="mb-4">

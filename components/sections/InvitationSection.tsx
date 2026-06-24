@@ -15,10 +15,10 @@ export default function InvitationSection() {
           variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }}
         >
           <motion.p variants={fadeUp} className="font-sans text-xs tracking-[0.4em] uppercase mb-4 glow-pulse" style={{ color: 'var(--color-accent)', opacity: 0.7 }}>
-            ✦ &nbsp; Shubh Vivah &nbsp; ✦
+            {weddingData.invitationSubtitle || '✦   Shubh Vivah   ✦'}
           </motion.p>
           <motion.h2 variants={fadeUp} className="font-display shimmer-text" style={{ fontSize: 'clamp(2.2rem, 5vw, 3.5rem)' }}>
-            The Invitation
+            {weddingData.invitationHeading || 'The Invitation'}
           </motion.h2>
           <LotusDivider className="mt-6" />
         </motion.div>
@@ -46,7 +46,7 @@ export default function InvitationSection() {
             <div className="flex flex-col items-center mb-4">
               <span className="text-3xl glow-pulse" style={{ color: 'var(--color-accent)', filter: 'drop-shadow(0 0 12px var(--color-glow-strong))' }}>◆</span>
               <p className="font-sans text-[10px] tracking-[0.4em] uppercase mt-2" style={{ color: 'var(--color-muted)' }}>
-                Together in love
+                {weddingData.invitationBlessing || 'Together in love'}
               </p>
             </div>
 
