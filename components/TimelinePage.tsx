@@ -1,8 +1,7 @@
 'use client'
 import { useRef, ReactNode } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { useEditMode } from '@/context/EditModeContext'
-import EditableText from '@/components/ui/EditableText'
+import { useWeddingData } from '@/context/WeddingDataContext'
 import { formatShortDate } from '@/lib/utils'
 import { MessageCircle } from 'lucide-react'
 
@@ -21,7 +20,7 @@ function GlassCard({ children, className = '' }: { children: ReactNode; classNam
 }
 
 export default function TimelinePage() {
-  const { data: weddingData } = useEditMode()
+  const weddingData = useWeddingData()
   const containerRef = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({ target: containerRef })
 
@@ -46,7 +45,7 @@ export default function TimelinePage() {
               <motion.h1 className="font-display shimmer-text leading-[0.9]"
                 style={{ fontSize: 'clamp(3rem, 12vw, 9rem)', letterSpacing: '-0.02em' }}
                 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }}>
-                <EditableText field="groomName" className="shimmer-text">{weddingData.groomName}</EditableText>
+                {weddingData.groomName}
               </motion.h1>
               <div className="flex items-center justify-center gap-8 my-4">
                 <div className="h-px w-20" style={{ background: 'linear-gradient(to right, transparent, rgba(192,160,96,0.4))' }} />
@@ -56,7 +55,7 @@ export default function TimelinePage() {
               <motion.h1 className="font-display shimmer-text leading-[0.9]"
                 style={{ fontSize: 'clamp(3rem, 12vw, 9rem)', letterSpacing: '-0.02em' }}
                 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.7 }}>
-                <EditableText field="brideName" className="shimmer-text">{weddingData.brideName}</EditableText>
+                {weddingData.brideName}
               </motion.h1>
               <p className="font-sans text-xs tracking-[0.3em] uppercase mt-10"
                 style={{ color: 'var(--color-accent)', opacity: 0.6 }}>
@@ -78,27 +77,19 @@ export default function TimelinePage() {
               <GlassCard className="text-center">
                 <p className="font-sans text-[10px] tracking-[0.4em] uppercase mb-4" style={{ color: 'var(--color-accent)', opacity: 0.6 }}>The Invitation</p>
                 <h2 className="font-display text-3xl md:text-4xl shimmer-text mb-6">You Are Invited</h2>
-                <EditableText field="invitationText" tag="p" multiline className="font-sans text-sm leading-relaxed mb-6" style={{ color: 'var(--color-muted)' }}>
+                <p className="font-sans text-sm leading-relaxed mb-6" style={{ color: 'var(--color-muted)' }}>
                   {weddingData.invitationText}
-                </EditableText>
+                </p>
                 <div className="h-px w-full mb-6" style={{ background: 'rgba(192,160,96,0.15)' }} />
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
                   <div className="text-center">
-                    <EditableText field="groomName" tag="p" className="shimmer-text font-display text-2xl">{weddingData.groomName}</EditableText>
-                    {weddingData.groomParents && (
-                      <p className="font-sans text-[10px] mt-1" style={{ color: 'var(--color-muted)' }}>
-                        Son of <EditableText field="groomParents">{weddingData.groomParents}</EditableText>
-                      </p>
-                    )}
+                    <p className="shimmer-text font-display text-2xl">{weddingData.groomName}</p>
+                    {weddingData.groomParents && <p className="font-sans text-[10px] mt-1" style={{ color: 'var(--color-muted)' }}>Son of {weddingData.groomParents}</p>}
                   </div>
                   <span style={{ color: 'var(--color-accent)', opacity: 0.4 }}>&</span>
                   <div className="text-center">
-                    <EditableText field="brideName" tag="p" className="shimmer-text font-display text-2xl">{weddingData.brideName}</EditableText>
-                    {weddingData.brideParents && (
-                      <p className="font-sans text-[10px] mt-1" style={{ color: 'var(--color-muted)' }}>
-                        Daughter of <EditableText field="brideParents">{weddingData.brideParents}</EditableText>
-                      </p>
-                    )}
+                    <p className="shimmer-text font-display text-2xl">{weddingData.brideName}</p>
+                    {weddingData.brideParents && <p className="font-sans text-[10px] mt-1" style={{ color: 'var(--color-muted)' }}>Daughter of {weddingData.brideParents}</p>}
                   </div>
                 </div>
               </GlassCard>
@@ -113,15 +104,9 @@ export default function TimelinePage() {
                 {weddingData.coupleStory.map((item, i) => (
                   <GlassCard key={i}>
                     <span className="text-2xl mb-2 block">{item.icon}</span>
-                    <EditableText field="date" index={i} arrayField="coupleStory" tag="p" className="font-sans text-[10px] tracking-[0.3em] uppercase" style={{ color: 'var(--color-accent)', opacity: 0.5 }}>
-                      {item.date}
-                    </EditableText>
-                    <EditableText field="title" index={i} arrayField="coupleStory" tag="h3" className="font-display text-lg mt-1 mb-2" style={{ color: 'var(--color-text)' }}>
-                      {item.title}
-                    </EditableText>
-                    <EditableText field="description" index={i} arrayField="coupleStory" tag="p" multiline className="font-sans text-xs leading-relaxed" style={{ color: 'var(--color-muted)' }}>
-                      {item.description}
-                    </EditableText>
+                    <p className="font-sans text-[10px] tracking-[0.3em] uppercase" style={{ color: 'var(--color-accent)', opacity: 0.5 }}>{item.date}</p>
+                    <h3 className="font-display text-lg mt-1 mb-2" style={{ color: 'var(--color-text)' }}>{item.title}</h3>
+                    <p className="font-sans text-xs leading-relaxed" style={{ color: 'var(--color-muted)' }}>{item.description}</p>
                   </GlassCard>
                 ))}
               </div>
@@ -133,22 +118,14 @@ export default function TimelinePage() {
             <div className="max-w-2xl mx-auto px-6">
               <p className="font-sans text-[10px] tracking-[0.4em] uppercase mb-6 text-center" style={{ color: 'var(--color-accent)', opacity: 0.6 }}>The Events</p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {weddingData.events.map((ev, i) => (
+                {weddingData.events.map((ev) => (
                   <GlassCard key={ev.id} className="!p-5">
                     <div className="flex items-start gap-3">
                       <span className="text-2xl">{ev.emoji}</span>
                       <div>
-                        <EditableText field="name" index={i} arrayField="events" tag="h4" className="font-display text-base" style={{ color: 'var(--color-text)' }}>
-                          {ev.name}
-                        </EditableText>
-                        <p className="font-sans text-[10px] mt-0.5" style={{ color: 'var(--color-accent)', opacity: 0.7 }}>
-                          <EditableText field="date" index={i} arrayField="events">{ev.date}</EditableText>
-                          {' · '}
-                          <EditableText field="time" index={i} arrayField="events">{ev.time}</EditableText>
-                        </p>
-                        <EditableText field="venue" index={i} arrayField="events" tag="p" className="font-sans text-[10px] mt-1" style={{ color: 'var(--color-muted)' }}>
-                          {ev.venue}
-                        </EditableText>
+                        <h4 className="font-display text-base" style={{ color: 'var(--color-text)' }}>{ev.name}</h4>
+                        <p className="font-sans text-[10px] mt-0.5" style={{ color: 'var(--color-accent)', opacity: 0.7 }}>{ev.date} · {ev.time}</p>
+                        <p className="font-sans text-[10px] mt-1" style={{ color: 'var(--color-muted)' }}>{ev.venue}</p>
                       </div>
                     </div>
                   </GlassCard>
@@ -178,7 +155,7 @@ export default function TimelinePage() {
                 <p className="font-sans text-[10px] tracking-[0.4em] uppercase mb-4" style={{ color: 'var(--color-accent)', opacity: 0.6 }}>RSVP</p>
                 <h2 className="font-display text-3xl shimmer-text mb-4">Will You Join Us?</h2>
                 <p className="font-sans text-sm mb-8" style={{ color: 'var(--color-muted)' }}>
-                  Please respond by <EditableText field="rsvp.deadline">{weddingData.rsvp.deadline}</EditableText>
+                  Please respond by {weddingData.rsvp.deadline}
                 </p>
                 <a href={whatsapp} target="_blank" rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full font-sans text-sm font-semibold tracking-wider transition-all hover:scale-105"
@@ -193,19 +170,13 @@ export default function TimelinePage() {
           <div className="min-w-full h-full flex items-center justify-center" style={{ background: 'var(--color-bg)' }}>
             <div className="text-center px-6">
               <p className="shimmer-text font-display mb-3" style={{ fontSize: 'clamp(2rem, 6vw, 4rem)' }}>
-                <EditableText field="groomName" className="shimmer-text">{weddingData.groomName}</EditableText>
-                {' & '}
-                <EditableText field="brideName" className="shimmer-text">{weddingData.brideName}</EditableText>
+                {weddingData.groomName} & {weddingData.brideName}
               </p>
               <p className="font-sans text-xs tracking-[0.3em] uppercase mb-4" style={{ color: 'var(--color-accent)', opacity: 0.5 }}>
                 {formatShortDate(weddingData.weddingDate)}
               </p>
-              <EditableText field="tagline" tag="p" className="font-serif italic text-sm" style={{ color: 'var(--color-muted)' }}>
-                {weddingData.tagline}
-              </EditableText>
-              <EditableText field="hashtag" tag="p" className="font-sans text-xs mt-8" style={{ color: 'var(--color-muted)', opacity: 0.3 }}>
-                {weddingData.hashtag}
-              </EditableText>
+              <p className="font-serif italic text-sm" style={{ color: 'var(--color-muted)' }}>{weddingData.tagline}</p>
+              <p className="font-sans text-xs mt-8" style={{ color: 'var(--color-muted)', opacity: 0.3 }}>{weddingData.hashtag}</p>
             </div>
           </div>
 
