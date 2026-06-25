@@ -55,7 +55,6 @@ export interface WeddingConfig {
   familyBride: FamilyMember[]
   familyGroom: FamilyMember[]
   venue: { name: string; address: string; mapUrl: string }
-  sections?: Record<string, boolean>
   rsvp: { whatsappNumber: string; message: string; deadline: string }
   socialLinks?: { instagram?: string }
   sections?: Record<string, boolean>
