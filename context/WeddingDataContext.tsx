@@ -67,6 +67,7 @@ interface EditorPayload {
   rsvpMessage?: string
   rsvpDeadline?: string
   instagram?: string
+  sections?: Record<string, unknown>
 }
 
 function mapEditorToConfig(d: EditorPayload): WeddingConfig {
@@ -132,6 +133,7 @@ function mapEditorToConfig(d: EditorPayload): WeddingConfig {
     socialLinks: {
       instagram: d.instagram || defaultData.socialLinks?.instagram,
     },
+    ...(d.sections ? { sections: d.sections as Record<string, boolean> } : {}),
   }
 }
 

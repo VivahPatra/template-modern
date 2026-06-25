@@ -4,6 +4,7 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import { useWeddingData } from '@/context/WeddingDataContext'
 import { formatShortDate } from '@/lib/utils'
 import { MessageCircle } from 'lucide-react'
+import SectionGate from '@/components/ui/SectionGate'
 
 function GlassCard({ children, className = '' }: { children: ReactNode; className?: string }) {
   return (
@@ -35,6 +36,7 @@ export default function TimelinePage() {
         <motion.div className="flex h-full" style={{ x }}>
 
           {/* Panel 1: Hero */}
+          <SectionGate name="hero">
           <div className="min-w-full h-full flex items-center justify-center" style={{ background: 'var(--color-bg)' }}>
             <div className="text-center px-6">
               <motion.p className="font-sans text-[10px] tracking-[0.6em] uppercase mb-8"
@@ -70,8 +72,10 @@ export default function TimelinePage() {
               </div>
             </div>
           </div>
+          </SectionGate>
 
           {/* Panel 2: Invitation */}
+          <SectionGate name="invitation">
           <div className="min-w-full h-full flex items-center justify-center" style={{ background: 'var(--color-surface)' }}>
             <div className="max-w-lg mx-auto px-6">
               <GlassCard className="text-center">
@@ -95,8 +99,10 @@ export default function TimelinePage() {
               </GlassCard>
             </div>
           </div>
+          </SectionGate>
 
           {/* Panel 3: Our Story */}
+          <SectionGate name="coupleStory">
           <div className="min-w-full h-full flex items-center justify-center" style={{ background: 'var(--color-bg)' }}>
             <div className="max-w-2xl mx-auto px-6">
               <p className="font-sans text-[10px] tracking-[0.4em] uppercase mb-6 text-center" style={{ color: 'var(--color-accent)', opacity: 0.6 }}>Our Story</p>
@@ -112,8 +118,10 @@ export default function TimelinePage() {
               </div>
             </div>
           </div>
+          </SectionGate>
 
           {/* Panel 4: Events */}
+          <SectionGate name="events">
           <div className="min-w-full h-full flex items-center justify-center" style={{ background: 'var(--color-surface)' }}>
             <div className="max-w-2xl mx-auto px-6">
               <p className="font-sans text-[10px] tracking-[0.4em] uppercase mb-6 text-center" style={{ color: 'var(--color-accent)', opacity: 0.6 }}>The Events</p>
@@ -133,8 +141,10 @@ export default function TimelinePage() {
               </div>
             </div>
           </div>
+          </SectionGate>
 
           {/* Panel 5: Gallery */}
+          <SectionGate name="gallery">
           <div className="min-w-full h-full flex items-center justify-center" style={{ background: 'var(--color-bg)' }}>
             <div className="max-w-xl mx-auto px-6">
               <p className="font-sans text-[10px] tracking-[0.4em] uppercase mb-6 text-center" style={{ color: 'var(--color-accent)', opacity: 0.6 }}>Gallery</p>
@@ -147,8 +157,10 @@ export default function TimelinePage() {
               </div>
             </div>
           </div>
+          </SectionGate>
 
           {/* Panel 6: RSVP */}
+          <SectionGate name="rsvp">
           <div className="min-w-full h-full flex items-center justify-center" style={{ background: 'var(--color-surface)' }}>
             <div className="max-w-md mx-auto px-6">
               <GlassCard className="text-center">
@@ -165,8 +177,10 @@ export default function TimelinePage() {
               </GlassCard>
             </div>
           </div>
+          </SectionGate>
 
           {/* Panel 7: Footer */}
+          <SectionGate name="footer">
           <div className="min-w-full h-full flex items-center justify-center" style={{ background: 'var(--color-bg)' }}>
             <div className="text-center px-6">
               <p className="shimmer-text font-display mb-3" style={{ fontSize: 'clamp(2rem, 6vw, 4rem)' }}>
@@ -179,6 +193,7 @@ export default function TimelinePage() {
               <p className="font-sans text-xs mt-8" style={{ color: 'var(--color-muted)', opacity: 0.3 }}>{weddingData.hashtag}</p>
             </div>
           </div>
+          </SectionGate>
 
         </motion.div>
 
