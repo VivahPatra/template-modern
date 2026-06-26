@@ -56,8 +56,8 @@ function EventNode({
           <img
             src={event.image}
             alt={event.name}
-            className="absolute inset-0 rounded-full object-cover"
-            style={{ width: '100%', height: '100%', filter: 'brightness(0.65) saturate(0.9)' }}
+            className="absolute inset-0 object-contain"
+            style={{ width: '100%', height: '100%', filter: 'brightness(1.2) saturate(1.1)' }}
             loading="lazy"
           />
         ) : (
@@ -72,10 +72,6 @@ function EventNode({
           </div>
         )}
 
-        <div
-          className="absolute inset-0 rounded-full pointer-events-none"
-          style={{ background: `radial-gradient(circle, transparent 50%, ${color}18 100%)` }}
-        />
       </div>
 
       {/* Name + date */}
