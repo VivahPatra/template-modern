@@ -138,6 +138,7 @@ function mapEditorToConfig(d: EditorPayload): WeddingConfig {
   }
   // Name order swap
   if (d.groomFirst === false) {
+    result.groomFirst = false
     const tmp = result.groomName; result.groomName = result.brideName; result.brideName = tmp
     const tmpP = result.groomParents; result.groomParents = result.brideParents; result.brideParents = tmpP
   }
