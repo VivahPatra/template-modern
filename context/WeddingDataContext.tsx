@@ -35,6 +35,7 @@ interface EditorGalleryImage {
 }
 
 interface EditorPayload {
+  groomFirst?: boolean
   groomName?: string
   brideName?: string
   groomParents?: string
@@ -71,7 +72,7 @@ interface EditorPayload {
 }
 
 function mapEditorToConfig(d: EditorPayload): WeddingConfig {
-  return {
+  const result: WeddingConfig = {
     groomName: d.groomName || defaultData.groomName,
     brideName: d.brideName || defaultData.brideName,
     groomParents: d.groomParents || defaultData.groomParents,
@@ -135,6 +136,12 @@ function mapEditorToConfig(d: EditorPayload): WeddingConfig {
     },
     ...(d.sections ? { sections: d.sections as Record<string, boolean> } : {}),
   }
+  // Name order swap
+  if (d.groomFirst === false) {
+    const tmp = result.groomName; result.groomName = result.brideName; result.brideName = tmp
+    const tmpP = result.groomParents; result.groomParents = result.brideParents; result.brideParents = tmpP
+  }
+  return result
 }
 
 export function WeddingDataProvider({ children }: { children: ReactNode }) {
