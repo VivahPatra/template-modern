@@ -2,14 +2,18 @@
 import { motion } from 'framer-motion'
 import { formatShortDate } from '@/lib/utils'
 import { useWeddingData } from '@/context/WeddingDataContext'
-import LotusDivider from '@/components/ui/LotusDivider'
+import StarDivider from '@/components/ui/StarDivider'
+import CelestialBg from '@/components/ui/CelestialBg'
+import SectionMoon from '@/components/ui/SectionMoon'
 
 export default function FooterSection() {
   const weddingData = useWeddingData()
   return (
-    <footer id="footer" className="py-20 px-6 text-center" style={{ background: 'var(--color-surface2)' }}>
-      <div className="max-w-2xl mx-auto">
-        <LotusDivider className="mb-10" />
+    <footer id="footer" className="py-20 px-6 text-center relative overflow-hidden" style={{ background: 'var(--color-surface2)' }}>
+      <CelestialBg />
+      <SectionMoon side="left" />
+      <div className="max-w-2xl mx-auto relative z-10">
+        <StarDivider className="mb-10" />
 
         <p className="shimmer-text font-display mb-1" style={{ fontSize: 'clamp(1.8rem, 4vw, 2.8rem)' }}>
           {weddingData.brideName} &amp; {weddingData.groomName}
@@ -26,10 +30,10 @@ export default function FooterSection() {
           {weddingData.hashtag}
         </p>
 
-        <LotusDivider className="mt-10" />
+        <StarDivider className="mt-10" />
 
-        <p className="font-sans text-xs mt-8 opacity-30" style={{ color: 'var(--color-muted)' }}>
-          Made with love · Modern City Vibes
+        <p className="font-sans text-xs mt-8" style={{ color: '#b0a8d0', opacity: 0.6 }}>
+          Made with love · Written in the Stars
         </p>
       </div>
     </footer>

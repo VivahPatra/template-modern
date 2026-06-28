@@ -11,70 +11,64 @@ export default function LoadingScreen({ onComplete }: Props) {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
     >
-      {/* Lotus mandala */}
+      {/* Celestial spinner */}
       <div className="relative w-40 h-40 flex items-center justify-center mb-8">
-        {/* Outer ring CW */}
+        {/* Outer star ring CW */}
         <motion.div
           className="absolute inset-0"
           animate={{ rotate: 360 }}
-          transition={{ duration: 12, repeat: Infinity, ease: 'linear' }}
+          transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
         >
           <svg viewBox="0 0 160 160" width="160" height="160" aria-hidden>
-            <circle cx="80" cy="80" r="72" fill="none" stroke="var(--color-accent)" strokeWidth="0.8" opacity="0.25" strokeDasharray="4 6" />
-            {[0,45,90,135,180,225,270,315].map((deg, i) => (
-              <ellipse key={i} cx="80" cy="80" rx="4" ry="10"
+            <circle cx="80" cy="80" r="72" fill="none" stroke="var(--color-accent)" strokeWidth="0.5" opacity="0.2" strokeDasharray="2 8" />
+            {[0, 45, 90, 135, 180, 225, 270, 315].map((deg, i) => (
+              <circle key={i}
+                cx={80 + Math.cos(deg * Math.PI / 180) * 68}
+                cy={80 + Math.sin(deg * Math.PI / 180) * 68}
+                r={i % 2 === 0 ? 2 : 1.5}
                 fill={i % 2 === 0 ? 'var(--color-accent)' : 'var(--color-accent2)'}
                 opacity="0.6"
-                transform={`rotate(${deg} 80 80) translate(0,-62)`}
               />
             ))}
           </svg>
         </motion.div>
 
-        {/* Middle ring CCW */}
+        {/* Inner ring CCW */}
         <motion.div
           className="absolute"
-          style={{ width: 110, height: 110 }}
+          style={{ width: 100, height: 100 }}
           animate={{ rotate: -360 }}
-          transition={{ duration: 8, repeat: Infinity, ease: 'linear' }}
+          transition={{ duration: 12, repeat: Infinity, ease: 'linear' }}
         >
-          <svg viewBox="0 0 110 110" width="110" height="110" aria-hidden>
-            {[0,36,72,108,144,180,216,252,288,324].map((deg, i) => (
-              <ellipse key={i} cx="55" cy="55" rx="3" ry="7"
-                fill={i % 2 === 0 ? 'var(--color-accent3)' : 'var(--color-accent)'}
+          <svg viewBox="0 0 100 100" width="100" height="100" aria-hidden>
+            {[0, 60, 120, 180, 240, 300].map((deg, i) => (
+              <circle key={i}
+                cx={50 + Math.cos(deg * Math.PI / 180) * 38}
+                cy={50 + Math.sin(deg * Math.PI / 180) * 38}
+                r={1.5}
+                fill="var(--color-accent3)"
                 opacity="0.5"
-                transform={`rotate(${deg} 55 55) translate(0,-42)`}
               />
             ))}
+            {[0, 60, 120, 180, 240, 300].map((deg, i) => {
+              const next = (i + 1) % 6
+              const x1 = 50 + Math.cos(deg * Math.PI / 180) * 38
+              const y1 = 50 + Math.sin(deg * Math.PI / 180) * 38
+              const x2 = 50 + Math.cos(((next * 60)) * Math.PI / 180) * 38
+              const y2 = 50 + Math.sin(((next * 60)) * Math.PI / 180) * 38
+              return <line key={`l-${i}`} x1={x1} y1={y1} x2={x2} y2={y2} stroke="var(--color-accent2)" strokeWidth="0.3" opacity="0.25" />
+            })}
           </svg>
         </motion.div>
 
-        {/* Inner lotus */}
+        {/* Center crescent */}
         <motion.div
-          className="absolute"
-          style={{ width: 64, height: 64 }}
-          animate={{ rotate: 360 }}
-          transition={{ duration: 16, repeat: Infinity, ease: 'linear' }}
-        >
-          <svg viewBox="0 0 64 64" width="64" height="64" aria-hidden>
-            {[0,60,120,180,240,300].map((deg, i) => (
-              <ellipse key={i} cx="32" cy="32" rx="5" ry="12"
-                fill="var(--color-accent)"
-                opacity="0.4"
-                transform={`rotate(${deg} 32 32) translate(0,-18)`}
-              />
-            ))}
-          </svg>
-        </motion.div>
-
-        {/* Center lotus emoji */}
-        <motion.div
-          className="relative z-10 text-4xl"
+          className="relative z-10"
           animate={{ scale: [1, 1.1, 1] }}
-          transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+          transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
           style={{ filter: 'drop-shadow(0 0 16px var(--color-glow-strong))' }}
         >
-          <span style={{ fontSize: 48, color: 'var(--color-accent)', letterSpacing: '0.1em' }}>✦</span>
+          <img src="/assets/moon.png" alt="" style={{ width: 48, height: 48, filter: 'drop-shadow(0 0 15px rgba(220,230,255,0.8)) drop-shadow(0 0 30px rgba(200,210,255,0.5))' }} />
         </motion.div>
       </div>
 
@@ -94,7 +88,7 @@ export default function LoadingScreen({ onComplete }: Props) {
         animate={{ opacity: [0.5, 1, 0.5] }}
         transition={{ duration: 2, repeat: Infinity }}
       >
-        ◆
+        ✦
       </motion.p>
     </motion.div>
   )

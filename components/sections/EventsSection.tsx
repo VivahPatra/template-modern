@@ -1,6 +1,8 @@
 'use client'
 import { motion } from 'framer-motion'
-import LotusDivider from '@/components/ui/LotusDivider'
+import StarDivider from '@/components/ui/StarDivider'
+import CelestialBg from '@/components/ui/CelestialBg'
+import SectionMoon from '@/components/ui/SectionMoon'
 import { useWeddingData } from '@/context/WeddingDataContext'
 import type { WeddingEvent } from '@/types/wedding.types'
 import { fadeUp, staggerContainer } from '@/lib/animations'
@@ -133,8 +135,10 @@ export default function EventsSection() {
   const row2 = events.slice(half)
 
   return (
-    <section id="events" className="py-28 px-6" style={{ background: 'var(--color-surface2)' }}>
-      <div className="max-w-5xl mx-auto">
+    <section id="events" className="py-28 px-6 relative overflow-hidden" style={{ background: 'var(--color-surface2)' }}>
+      <CelestialBg />
+      <SectionMoon side="left" />
+      <div className="max-w-5xl mx-auto relative z-10">
         {/* Heading */}
         <motion.div
           className="text-center mb-16"
@@ -148,7 +152,7 @@ export default function EventsSection() {
             className="font-sans text-xs tracking-[0.4em] uppercase mb-4 glow-pulse"
             style={{ color: 'var(--color-accent)', opacity: 0.7 }}
           >
-            ✦ &nbsp; The Celebrations &nbsp; ✦
+            ✦ &nbsp; Celestial Celebrations &nbsp; ✦
           </motion.p>
           <motion.h2
             variants={fadeUp}
@@ -158,7 +162,7 @@ export default function EventsSection() {
             Our <em>Events</em>
           </motion.h2>
           <motion.div variants={fadeUp}>
-            <LotusDivider className="mt-6" />
+            <StarDivider className="mt-6" />
           </motion.div>
         </motion.div>
 

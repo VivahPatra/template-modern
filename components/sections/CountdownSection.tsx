@@ -3,7 +3,9 @@ import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { useWeddingData } from '@/context/WeddingDataContext'
 import { fadeUp, staggerContainer } from '@/lib/animations'
-import LotusDivider from '@/components/ui/LotusDivider'
+import StarDivider from '@/components/ui/StarDivider'
+import StarField from '@/components/ui/StarField'
+import SectionMoon from '@/components/ui/SectionMoon'
 
 function getTimeLeft(target: Date) {
   const diff = Math.max(0, target.getTime() - Date.now())
@@ -32,16 +34,18 @@ export default function CountdownSection() {
   ]
 
   return (
-    <section id="countdown" className="py-28 px-6" style={{ background: 'var(--color-bg)' }}>
-      <div className="max-w-4xl mx-auto">
+    <section id="countdown" className="py-28 px-6 relative overflow-hidden" style={{ background: 'var(--color-bg)' }}>
+      <StarField />
+      <SectionMoon side="right" />
+      <div className="max-w-4xl mx-auto relative z-10">
         <motion.div className="text-center mb-14" variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }}>
           <motion.p variants={fadeUp} className="font-sans text-xs tracking-[0.4em] uppercase mb-4 glow-pulse" style={{ color: 'var(--color-accent)', opacity: 0.7 }}>
-            ✦ &nbsp; Counting Down &nbsp; ✦
+            ✦ &nbsp; Stars Align &nbsp; ✦
           </motion.p>
           <motion.h2 variants={fadeUp} className="font-display shimmer-text" style={{ fontSize: 'clamp(2.2rem, 5vw, 3.5rem)' }}>
             Until We Are One
           </motion.h2>
-          <LotusDivider className="mt-6" />
+          <StarDivider className="mt-6" />
         </motion.div>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">

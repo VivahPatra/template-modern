@@ -4,7 +4,9 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { X } from 'lucide-react'
 import { useWeddingData } from '@/context/WeddingDataContext'
 import { fadeUp, scaleIn, staggerContainer } from '@/lib/animations'
-import LotusDivider from '@/components/ui/LotusDivider'
+import StarDivider from '@/components/ui/StarDivider'
+import StarField from '@/components/ui/StarField'
+import SectionMoon from '@/components/ui/SectionMoon'
 
 function imgWidth(span: string | undefined) {
   if (span === 'wide') return 400
@@ -17,18 +19,20 @@ export default function GallerySection() {
   const [selected, setSelected] = useState<string | null>(null)
 
   return (
-    <section id="gallery" className="py-28 overflow-hidden" style={{ background: 'var(--color-surface)' }}>
-      <div className="max-w-6xl mx-auto px-6">
+    <section id="gallery" className="py-28 overflow-hidden relative" style={{ background: 'var(--color-surface)' }}>
+      <StarField />
+      <SectionMoon side="right" />
+      <div className="max-w-6xl mx-auto px-6 relative z-10">
         <motion.div
           className="text-center mb-14"
           variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }}
         >
           <motion.p variants={fadeUp} className="font-sans text-xs tracking-[0.4em] uppercase mb-4 glow-pulse"
-            style={{ color: 'var(--color-accent)', opacity: 0.7 }}>✦ &nbsp; Moments &nbsp; ✦</motion.p>
+            style={{ color: 'var(--color-accent)', opacity: 0.7 }}>✦ &nbsp; Starlit Moments &nbsp; ✦</motion.p>
           <motion.h2 variants={fadeUp} className="font-display shimmer-text" style={{ fontSize: 'clamp(2.2rem, 5vw, 3.5rem)' }}>
             Our <em>Gallery</em>
           </motion.h2>
-          <LotusDivider className="mt-6" />
+          <StarDivider className="mt-6" />
         </motion.div>
       </div>
 

@@ -2,104 +2,58 @@
 import { motion } from 'framer-motion'
 import { useWeddingData } from '@/context/WeddingDataContext'
 import { fadeUp, scaleIn, staggerContainer } from '@/lib/animations'
-import LotusDivider from '@/components/ui/LotusDivider'
-import PichwaiCorner from '@/components/ui/PichwaiCorner'
+import { formatShortDate } from '@/lib/utils'
+import CelestialBg from '@/components/ui/CelestialBg'
+import SectionMoon from '@/components/ui/SectionMoon'
+import StarDivider from '@/components/ui/StarDivider'
+import CelestialCorner from '@/components/ui/CelestialCorner'
 
 export default function VenueSection() {
   const weddingData = useWeddingData()
   return (
-    <section id="venue" className="py-28 px-6" style={{ background: 'var(--color-surface2)' }}>
-      <div className="max-w-4xl mx-auto">
+    <section id="venue" className="py-28 px-6 relative overflow-hidden" style={{ background: 'var(--color-surface2)' }}>
+      <CelestialBg />
+      <SectionMoon side="left" />
+      <div className="max-w-4xl mx-auto relative z-10">
         <motion.div className="text-center mb-14" variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }}>
           <motion.p variants={fadeUp} className="font-sans text-xs tracking-[0.4em] uppercase mb-4 glow-pulse" style={{ color: 'var(--color-accent)', opacity: 0.7 }}>
-            ✦ &nbsp; Find Us &nbsp; ✦
+            ✦ &nbsp; Under These Stars &nbsp; ✦
           </motion.p>
           <motion.h2 variants={fadeUp} className="font-display shimmer-text" style={{ fontSize: 'clamp(2.2rem, 5vw, 3.5rem)' }}>
             Venue
           </motion.h2>
-          <LotusDivider className="mt-6" />
+          <StarDivider className="mt-6" />
         </motion.div>
 
         <motion.div
           variants={scaleIn} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }}
           className="relative rounded-2xl overflow-hidden"
-          style={{ background: 'var(--color-surface)', border: '1px solid var(--color-border-strong)', boxShadow: '0 0 40px rgba(200,146,42,0.08), 0 20px 50px rgba(0,0,0,0.4)' }}
+          style={{ background: 'var(--color-surface)', border: '1px solid var(--color-border-strong)', boxShadow: '0 0 40px rgba(160,128,200,0.08), 0 20px 50px rgba(0,0,0,0.4)' }}
         >
-          <PichwaiCorner size={56} className="absolute top-0 left-0 z-10" />
-          <PichwaiCorner size={56} flip={{ x: true }} className="absolute top-0 right-0 z-10" />
-          <PichwaiCorner size={56} flip={{ y: true }} className="absolute bottom-0 left-0 z-10" />
-          <PichwaiCorner size={56} flip={{ x: true, y: true }} className="absolute bottom-0 right-0 z-10" />
+          <CelestialCorner size={56} className="absolute top-0 left-0 z-10" />
+          <CelestialCorner size={56} flip={{ x: true }} className="absolute top-0 right-0 z-10" />
+          <CelestialCorner size={56} flip={{ y: true }} className="absolute bottom-0 left-0 z-10" />
+          <CelestialCorner size={56} flip={{ x: true, y: true }} className="absolute bottom-0 right-0 z-10" />
 
-          {/* Header */}
-          <div className="py-12 px-8 text-center" style={{ background: 'linear-gradient(135deg, var(--color-surface2), var(--color-surface))' }}>
+          <div className="py-14 px-8 text-center" style={{ background: 'linear-gradient(135deg, var(--color-surface2), var(--color-surface))' }}>
             <div className="text-5xl mb-4 float-slow">🏛️</div>
-            <h3 className="font-display text-3xl glow-text mb-2" style={{ color: 'var(--color-accent)' }}>{weddingData.venue.name}</h3>
-            <p className="font-sans text-sm" style={{ color: 'var(--color-muted)' }}>{weddingData.venue.address}</p>
-          </div>
-
-          {/* Events at venue */}
-          <div className="px-8 py-8">
-            <p className="font-sans text-xs tracking-widest uppercase mb-5 text-center" style={{ color: 'var(--color-accent)', opacity: 0.6 }}>
-              Events at this Venue
+            <h3 className="font-display text-3xl glow-text mb-3" style={{ color: 'var(--color-accent)' }}>{weddingData.venue.name}</h3>
+            <p className="font-sans text-sm mb-2" style={{ color: 'var(--color-muted)' }}>{weddingData.venue.address}</p>
+            <p className="font-sans text-xs tracking-[0.3em] uppercase mb-8" style={{ color: 'var(--color-accent)', opacity: 0.7 }}>
+              {formatShortDate(weddingData.weddingDate)} · {weddingData.weddingDate.toLocaleTimeString('en-IN', { hour: 'numeric', minute: '2-digit', hour12: true })}
             </p>
-            <div className="flex flex-wrap justify-center gap-3 mb-6">
-              {weddingData.events.filter(e => e.venue === weddingData.venue.name).map(e => (
-                <a
-                  key={e.id}
-                  href={`https://maps.google.com/?q=${encodeURIComponent(e.venue + ', ' + e.venueAddress)}`}
-                  target="_blank" rel="noopener noreferrer"
-                  className="flex items-center gap-3 px-4 py-3 rounded-xl hover:opacity-80 transition-opacity"
-                  style={{ background: 'var(--color-surface2)', border: '1px solid var(--color-border)', minWidth: 220 }}
-                >
-                  <span className="text-xl float-emoji">{e.emoji}</span>
-                  <div>
-                    <p className="font-display text-base" style={{ color: 'var(--color-text)' }}>{e.name}</p>
-                    <p className="font-sans text-xs" style={{ color: 'var(--color-muted)' }}>{e.date} · {e.time}</p>
-                    <p className="font-sans text-xs mt-0.5" style={{ color: 'var(--color-accent)', opacity: 0.7 }}>📍 {e.venueAddress}</p>
-                  </div>
-                </a>
-              ))}
-            </div>
 
-            <LotusDivider className="my-6" />
-
-            <div className="text-center">
-              <motion.a
-                href={weddingData.venue.mapUrl}
-                target="_blank" rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 px-8 py-3 rounded-full font-sans text-sm font-semibold tracking-wider uppercase"
-                style={{ background: 'var(--color-accent)', color: '#080f1a', boxShadow: '0 0 24px rgba(200,146,42,0.4)' }}
-                whileHover={{ scale: 1.05, boxShadow: '0 0 40px rgba(200,146,42,0.6)' }}
-                whileTap={{ scale: 0.97 }}
-              >
-                📍 Get Directions
-              </motion.a>
-            </div>
-          </div>
-        </motion.div>
-
-        {/* Other venues */}
-        <motion.div
-          className="mt-8 flex flex-wrap justify-center gap-5"
-          variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}
-        >
-          {weddingData.events.filter(e => e.venue !== weddingData.venue.name).map(e => (
             <motion.a
-              key={e.id} variants={fadeUp}
-              href={`https://maps.google.com/?q=${encodeURIComponent(e.venue + ', ' + e.venueAddress)}`}
+              href={weddingData.venue.mapUrl}
               target="_blank" rel="noopener noreferrer"
-              className="px-5 py-4 rounded-xl hover:opacity-80 transition-opacity"
-              style={{ background: 'var(--color-surface)', border: '1px solid var(--color-border)', minWidth: 260, flex: '1 1 260px', maxWidth: 340 }}
+              className="inline-flex items-center gap-3 px-8 py-3 rounded-full font-sans text-sm font-semibold tracking-wider uppercase"
+              style={{ background: 'var(--color-accent)', color: '#050412', boxShadow: '0 0 24px rgba(212,192,144,0.4)' }}
+              whileHover={{ scale: 1.05, boxShadow: '0 0 40px rgba(212,192,144,0.6)' }}
+              whileTap={{ scale: 0.97 }}
             >
-              <div className="flex items-center gap-3 mb-2">
-                <span className="text-2xl float-emoji">{e.emoji}</span>
-                <h4 className="font-display text-lg" style={{ color: e.color }}>{e.name}</h4>
-              </div>
-              <p className="font-sans text-sm font-medium mb-0.5" style={{ color: 'var(--color-text)', opacity: 0.85 }}>{e.venue}</p>
-              <p className="font-sans text-xs" style={{ color: 'var(--color-muted)' }}>{e.venueAddress}</p>
-              <p className="font-sans text-xs mt-1" style={{ color: 'var(--color-accent)', opacity: 0.7 }}>📍 {e.date} · {e.time}</p>
+              📍 Get Directions
             </motion.a>
-          ))}
+          </div>
         </motion.div>
       </div>
     </section>

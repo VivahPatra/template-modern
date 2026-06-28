@@ -7,7 +7,7 @@ export const weddingData: WeddingConfig = {
   brideParents: 'Mr. Farhan & Mrs. Nadia Khan',
   weddingDate: new Date('2027-03-15T17:00:00'),
   hashtag: '#ArjunAishaForever',
-  tagline: 'Two hearts, one skyline',
+  tagline: 'Two souls, one constellation',
   invitationText:
     'In the city where we fell in love, we invite you to celebrate the beginning of our forever. Your presence will light up our evening.',
   heroImage: '/assets/palace.png',
