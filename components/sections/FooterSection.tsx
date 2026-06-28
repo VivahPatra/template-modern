@@ -16,7 +16,7 @@ export default function FooterSection() {
         <StarDivider className="mb-10" />
 
         <p className="shimmer-text font-display mb-1" style={{ fontSize: 'clamp(1.8rem, 4vw, 2.8rem)' }}>
-          {weddingData.brideName} &amp; {weddingData.groomName}
+          {weddingData.groomName} &amp; {weddingData.brideName}
         </p>
         <p className="font-sans text-xs tracking-[0.4em] uppercase mb-8" style={{ color: 'var(--color-accent)', opacity: 0.6 }}>
           {formatShortDate(weddingData.weddingDate)}

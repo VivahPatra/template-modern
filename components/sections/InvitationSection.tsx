@@ -60,20 +60,20 @@ export default function InvitationSection() {
             </svg>
 
             <h3 className="shimmer-text font-display" style={{ fontSize: 'clamp(2.5rem, 7vw, 4.5rem)', lineHeight: 1 }}>
-              {weddingData.brideName}
+              {weddingData.groomName}
             </h3>
-            {weddingData.brideParents && (
+            {weddingData.groomParents && (
               <p className="font-sans text-xs tracking-wide mt-1 mb-2" style={{ color: 'var(--color-muted)', opacity: 0.7 }}>
-                {weddingData.groomFirst === false ? 'Son' : 'Daughter'} of {weddingData.brideParents}
+                Son of {weddingData.groomParents}
               </p>
             )}
             <p className="font-serif italic text-xl mt-2 mb-2" style={{ color: 'var(--color-accent)', opacity: 0.65 }}>&amp;</p>
             <h3 className="shimmer-text font-display" style={{ fontSize: 'clamp(2.5rem, 7vw, 4.5rem)', lineHeight: 1 }}>
-              {weddingData.groomName}
+              {weddingData.brideName}
             </h3>
-            {weddingData.groomParents && (
+            {weddingData.brideParents && (
               <p className="font-sans text-xs tracking-wide mt-1" style={{ color: 'var(--color-muted)', opacity: 0.7 }}>
-                {weddingData.groomFirst === false ? 'Daughter' : 'Son'} of {weddingData.groomParents}
+                Daughter of {weddingData.brideParents}
               </p>
             )}
 
