@@ -5,7 +5,7 @@ export default function PlanetDivider() {
   return (
     <div className="relative flex items-center justify-center -my-10 z-10" aria-hidden>
       <motion.img
-        src="/assets/moon.png"
+        src="/assets/moon.webp"
         alt=""
         style={{
           width: 80, height: 80,

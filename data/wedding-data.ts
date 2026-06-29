@@ -10,15 +10,15 @@ export const weddingData: WeddingConfig = {
   tagline: 'Two souls, one constellation',
   invitationText:
     'In the city where we fell in love, we invite you to celebrate the beginning of our forever. Your presence will light up our evening.',
-  heroImage: '/assets/palace.png',
+  heroImage: '/assets/background.webp',
 
   events: [
-    { id: 'cocktail', name: 'Cocktail Night', emoji: '🍸', date: 'March 13, 2027', time: '8:00 PM', venue: 'Skybar Lounge', venueAddress: 'Connaught Place, Delhi', image: '/assets/events/engagement.png', color: '#3a8fd4', description: 'Craft cocktails and city lights.' },
-    { id: 'mehendi', name: 'Mehendi', emoji: '🌿', date: 'March 14, 2027', time: '4:00 PM', venue: 'The Terrace Garden', venueAddress: 'Hauz Khas Village, Delhi', image: '/assets/events/mehendi.png', color: '#c0a060', description: 'Henna, music and rooftop vibes.' },
-    { id: 'sangeet', name: 'Sangeet Night', emoji: '🎵', date: 'March 14, 2027', time: '9:00 PM', venue: 'The Grand Ballroom', venueAddress: 'The Oberoi, Delhi', image: '/assets/events/sangeet.png', color: '#e85050', description: 'Dance under chandeliers and city stars.' },
-    { id: 'haldi', name: 'Haldi', emoji: '✨', date: 'March 15, 2027', time: '10:00 AM', venue: 'Poolside Deck', venueAddress: 'ITC Maurya, Delhi', image: '/assets/events/haldi.png', color: '#c0a060', description: 'Golden morning, golden memories.' },
-    { id: 'wedding', name: 'The Wedding', emoji: '💍', date: 'March 15, 2027', time: '5:00 PM', venue: 'The Imperial Lawns', venueAddress: 'Janpath, New Delhi', image: '/assets/events/wedding.png', color: '#c0a060', description: 'Seven vows as the sun sets over the city.' },
-    { id: 'reception', name: 'Reception', emoji: '🥂', date: 'March 15, 2027', time: '9:00 PM', venue: 'The Imperial Ballroom', venueAddress: 'Janpath, New Delhi', image: '/assets/events/reception.png', color: '#3a8fd4', description: 'A night to remember under crystal lights.' },
+    { id: 'cocktail', name: 'Cocktail Night', emoji: '🍸', date: 'March 13, 2027', time: '8:00 PM', venue: 'Skybar Lounge', venueAddress: 'Connaught Place, Delhi', image: '/assets/events/engagement.webp', color: '#3a8fd4', description: 'Craft cocktails and city lights.' },
+    { id: 'mehendi', name: 'Mehendi', emoji: '🌿', date: 'March 14, 2027', time: '4:00 PM', venue: 'The Terrace Garden', venueAddress: 'Hauz Khas Village, Delhi', image: '/assets/events/mehendi.webp', color: '#c0a060', description: 'Henna, music and rooftop vibes.' },
+    { id: 'sangeet', name: 'Sangeet Night', emoji: '🎵', date: 'March 14, 2027', time: '9:00 PM', venue: 'The Grand Ballroom', venueAddress: 'The Oberoi, Delhi', image: '/assets/events/sangeet.webp', color: '#e85050', description: 'Dance under chandeliers and city stars.' },
+    { id: 'haldi', name: 'Haldi', emoji: '✨', date: 'March 15, 2027', time: '10:00 AM', venue: 'Poolside Deck', venueAddress: 'ITC Maurya, Delhi', image: '/assets/events/haldi.webp', color: '#c0a060', description: 'Golden morning, golden memories.' },
+    { id: 'wedding', name: 'The Wedding', emoji: '💍', date: 'March 15, 2027', time: '5:00 PM', venue: 'The Imperial Lawns', venueAddress: 'Janpath, New Delhi', image: '/assets/events/wedding.webp', color: '#c0a060', description: 'Seven vows as the sun sets over the city.' },
+    { id: 'reception', name: 'Reception', emoji: '🥂', date: 'March 15, 2027', time: '9:00 PM', venue: 'The Imperial Ballroom', venueAddress: 'Janpath, New Delhi', image: '/assets/events/reception.webp', color: '#3a8fd4', description: 'A night to remember under crystal lights.' },
   ],
 
   galleryImages: [

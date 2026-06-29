@@ -68,7 +68,7 @@ export default function LoadingScreen({ onComplete }: Props) {
           transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
           style={{ filter: 'drop-shadow(0 0 16px var(--color-glow-strong))' }}
         >
-          <img src="/assets/moon.png" alt="" style={{ width: 48, height: 48, filter: 'drop-shadow(0 0 15px rgba(220,230,255,0.8)) drop-shadow(0 0 30px rgba(200,210,255,0.5))' }} />
+          <img src="/assets/moon.webp" alt="" style={{ width: 48, height: 48, filter: 'drop-shadow(0 0 15px rgba(220,230,255,0.8)) drop-shadow(0 0 30px rgba(200,210,255,0.5))' }} />
         </motion.div>
       </div>
 

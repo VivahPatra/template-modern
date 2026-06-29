@@ -65,14 +65,14 @@ export default function HeroSection() {
 
       {/* Background image */}
       <motion.div className="absolute inset-0" style={{ scale: bgScale, y: bgY, filter: bgBrightnessFilter }}>
-        <img src="/assets/background.png" alt="" className="absolute inset-0 w-full h-full object-cover opacity-75" />
+        <img src="/assets/background.webp" alt="" className="absolute inset-0 w-full h-full object-cover opacity-75" />
         <div className="absolute inset-0" style={{
           background: 'linear-gradient(180deg, rgba(5,4,18,0.3) 0%, rgba(5,4,18,0.1) 40%, rgba(5,4,18,0.4) 100%)',
         }} />
       </motion.div>
 
       {/* Cloud/constellation layer */}
-      <motion.img src="/assets/layer3.png" alt=""
+      <motion.img src="/assets/layer3.webp" alt=""
         className="absolute inset-0 w-full h-full object-cover pointer-events-none z-[2]"
         style={{ filter: 'drop-shadow(0 -15px 40px rgba(160,128,200,0.5)) drop-shadow(0 -8px 20px rgba(212,192,144,0.3)) drop-shadow(0 -25px 60px rgba(100,70,180,0.4))' }}
         animate={{ y: [0, -8, 0] }}
@@ -165,7 +165,7 @@ export default function HeroSection() {
 
 
       {/* Cloud sparkle layer */}
-      <motion.img src="/assets/layer33.png" alt=""
+      <motion.img src="/assets/layer33.webp" alt=""
         className="absolute inset-0 w-full h-full object-cover pointer-events-none z-[5]"
         style={{ filter: 'drop-shadow(0 -12px 35px rgba(160,128,200,0.4)) drop-shadow(0 -6px 18px rgba(212,192,144,0.25)) drop-shadow(0 -20px 50px rgba(100,70,180,0.35))' }}
         animate={{ y: [0, -6, 0] }}
@@ -173,13 +173,13 @@ export default function HeroSection() {
       />
 
       {/* Mountain silhouette layer */}
-      <motion.img src="/assets/mountain2.png" alt="" className="absolute inset-0 w-full h-full object-cover pointer-events-none z-[4]" style={{ y: mountain2Y }} />
+      <motion.img src="/assets/mountain2.webp" alt="" className="absolute inset-0 w-full h-full object-cover pointer-events-none z-[4]" style={{ y: mountain2Y }} />
 
       {/* Mountain with telescope */}
-      <motion.img src="/assets/mountain.png" alt="" className="absolute bottom-0 left-0 w-full pointer-events-none z-[6]" style={{ maxHeight: '60%', objectFit: 'cover', objectPosition: 'bottom', y: mountain1Y }} />
+      <motion.img src="/assets/mountain.webp" alt="" className="absolute bottom-0 left-0 w-full pointer-events-none z-[6]" style={{ maxHeight: '60%', objectFit: 'cover', objectPosition: 'bottom', y: mountain1Y }} />
 
       {/* Bottom cloud border */}
-      <motion.img src="/assets/layer2.png" alt=""
+      <motion.img src="/assets/layer2.webp" alt=""
         className="absolute inset-0 w-full h-full object-cover object-bottom pointer-events-none z-[7]"
         style={{ filter: 'drop-shadow(0 -15px 40px rgba(160,128,200,0.5)) drop-shadow(0 -8px 20px rgba(212,192,144,0.3)) drop-shadow(0 -25px 60px rgba(100,70,180,0.4))' }}
         animate={{ y: [0, -7, 0] }}
@@ -187,7 +187,7 @@ export default function HeroSection() {
       />
 
       {/* Left corner cloud */}
-      <motion.img src="/assets/leftlayer1.png" alt=""
+      <motion.img src="/assets/leftlayer1.webp" alt=""
         className="absolute inset-0 w-full h-full object-cover object-bottom pointer-events-none z-[8]"
         style={{ filter: 'drop-shadow(0 -12px 35px rgba(160,128,200,0.5)) drop-shadow(0 -6px 18px rgba(212,192,144,0.3))' }}
         animate={{ y: [0, -5, 0] }}
@@ -195,7 +195,7 @@ export default function HeroSection() {
       />
 
       {/* Right corner cloud */}
-      <motion.img src="/assets/rightlayer1.png" alt=""
+      <motion.img src="/assets/rightlayer1.webp" alt=""
         className="absolute inset-0 w-full h-full object-cover object-bottom pointer-events-none z-[8]"
         style={{ filter: 'drop-shadow(0 -12px 35px rgba(160,128,200,0.5)) drop-shadow(0 -6px 18px rgba(212,192,144,0.3))' }}
         animate={{ y: [0, -6, 0] }}
@@ -239,7 +239,7 @@ export default function HeroSection() {
           }}
         />
         {/* Moon image */}
-        <img src="/assets/moon.png" alt=""
+        <img src="/assets/moon.webp" alt=""
           style={{
             width: 'clamp(80px, 15vw, 180px)',
             height: 'clamp(80px, 15vw, 180px)',
