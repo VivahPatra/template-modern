@@ -65,6 +65,7 @@ export default function GallerySection() {
                 alt={img.alt}
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 style={{ filter: 'brightness(0.75) saturate(0.9)' }}
+                loading="lazy"
               />
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                 style={{ background: 'linear-gradient(135deg, rgba(200,146,42,0.1), transparent)' }} />

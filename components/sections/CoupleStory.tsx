@@ -48,7 +48,7 @@ export default function CoupleStory() {
                         whileHover={{ boxShadow: '0 0 40px rgba(160,128,200,0.2)' }}
                         transition={{ duration: 0.3 }}
                       >
-                        <img src={milestone.image} alt={milestone.title} className="w-full h-full object-cover" style={{ filter: 'brightness(0.75) saturate(0.85)' }} />
+                        <img src={milestone.image} alt={milestone.title} loading="lazy" className="w-full h-full object-cover" style={{ filter: 'brightness(0.75) saturate(0.85)' }} />
                         <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, transparent 50%, var(--color-surface) 100%)' }} />
                       </motion.div>
                     )}

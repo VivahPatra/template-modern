@@ -42,7 +42,7 @@ export default function SectionMoon({ side = 'right' }: Props) {
             opacity: glowOpacity,
           }}
         />
-        <img src="/assets/moon.webp" alt=""
+        <img src="/assets/moon.webp" alt="" loading="lazy"
           style={{
             width: 80, height: 80,
             filter: 'drop-shadow(0 0 15px rgba(220,230,255,0.8)) drop-shadow(0 0 30px rgba(200,210,255,0.5)) drop-shadow(0 0 60px rgba(180,190,240,0.3))',

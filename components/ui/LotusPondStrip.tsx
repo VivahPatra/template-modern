@@ -55,6 +55,7 @@ export default function LotusPondStrip({ bgColor = 'transparent' }: Props) {
             src={l.type === 'lotus' ? '/assets/lotus.png' : '/assets/leaf.png'}
             alt=""
             style={{ width: l.size, height: 'auto', filter: 'brightness(1.3)' }}
+            loading="lazy"
           />
         </motion.div>
       ))}

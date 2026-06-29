@@ -76,7 +76,7 @@ export default function LoadingScreen({ onComplete }: Props) {
       <motion.div
         initial={{ width: 0 }}
         animate={{ width: 180 }}
-        transition={{ duration: 2.2, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
         onAnimationComplete={onComplete}
         className="h-px mb-6"
         style={{ background: 'linear-gradient(to right, transparent, var(--color-accent), transparent)' }}

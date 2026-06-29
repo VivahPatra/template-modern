@@ -35,6 +35,7 @@ export default function PageDecorations({ images, count = 10 }: Props) {
           src={d.src}
           alt=""
           aria-hidden
+          loading="lazy"
           width={d.size}
           className="block pointer-events-none select-none absolute z-[50]"
           style={{

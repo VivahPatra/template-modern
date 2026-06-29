@@ -151,7 +151,7 @@ export default function TimelinePage() {
               <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
                 {weddingData.galleryImages.map((img, i) => (
                   <div key={i} className="rounded-xl overflow-hidden aspect-square" style={{ border: '1px solid rgba(255,255,255,0.06)' }}>
-                    <img src={img.src} alt={img.alt} className="w-full h-full object-cover hover:scale-110 transition-transform duration-500" style={{ filter: 'brightness(0.8)' }} />
+                    <img src={img.src} alt={img.alt} loading="lazy" className="w-full h-full object-cover hover:scale-110 transition-transform duration-500" style={{ filter: 'brightness(0.8)' }} />
                   </div>
                 ))}
               </div>
