@@ -47,7 +47,7 @@ export default function HeroSection() {
   const bgBrightnessFilter = useTransform(bgBrightness, v => `brightness(${v})`)
 
   return (
-    <section ref={ref} className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section ref={ref} className="relative min-h-screen flex items-center justify-center" style={{ overflowX: 'clip' }}>
 
       {/* Background image */}
       <motion.div className="absolute inset-0" style={{ scale: bgScale, y: bgY, filter: bgBrightnessFilter }}>
@@ -209,7 +209,7 @@ export default function HeroSection() {
 
       {/* Text */}
       <motion.div
-        className="relative z-10 text-center px-6"
+        className="relative z-[30] text-center px-4"
         style={{ y: textY, opacity }}
         variants={staggerContainer}
         initial="hidden"
