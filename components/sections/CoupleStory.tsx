@@ -4,14 +4,12 @@ import { useWeddingData } from '@/context/WeddingDataContext'
 import { fadeUp, slideLeft, slideRight, staggerContainer } from '@/lib/animations'
 import StarDivider from '@/components/ui/StarDivider'
 import StarField from '@/components/ui/StarField'
-import SectionMoon from '@/components/ui/SectionMoon'
 
 export default function CoupleStory() {
   const weddingData = useWeddingData()
   return (
     <section id="story" className="py-28 px-6 relative overflow-hidden" style={{ background: 'var(--color-surface)' }}>
       <StarField />
-      <SectionMoon side="left" />
       <div className="max-w-5xl mx-auto relative z-10">
         <motion.div className="text-center mb-14" variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }}>
           <motion.p variants={fadeUp} className="font-sans text-xs tracking-[0.4em] uppercase mb-4 glow-pulse" style={{ color: 'var(--color-accent)', opacity: 0.7 }}>

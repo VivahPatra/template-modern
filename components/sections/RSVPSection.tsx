@@ -5,7 +5,6 @@ import { useWeddingData } from '@/context/WeddingDataContext'
 import { fadeUp, scaleIn, staggerContainer } from '@/lib/animations'
 import StarDivider from '@/components/ui/StarDivider'
 import StarField from '@/components/ui/StarField'
-import SectionMoon from '@/components/ui/SectionMoon'
 import CelestialCorner from '@/components/ui/CelestialCorner'
 
 export default function RSVPSection() {
@@ -15,7 +14,6 @@ export default function RSVPSection() {
   return (
     <section id="rsvp" className="py-28 px-6 relative overflow-hidden" style={{ background: 'var(--color-surface)' }}>
       <StarField />
-      <SectionMoon side="right" />
       {/* Background star glow */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden>
         <div className="absolute w-64 h-64 rounded-full blur-[120px] float-slow"

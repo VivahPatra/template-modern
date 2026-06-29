@@ -6,7 +6,6 @@ import { useWeddingData } from '@/context/WeddingDataContext'
 import { fadeUp, scaleIn, staggerContainer } from '@/lib/animations'
 import StarDivider from '@/components/ui/StarDivider'
 import StarField from '@/components/ui/StarField'
-import SectionMoon from '@/components/ui/SectionMoon'
 
 function imgWidth(span: string | undefined) {
   if (span === 'wide') return 400
@@ -21,7 +20,6 @@ export default function GallerySection() {
   return (
     <section id="gallery" className="py-28 overflow-hidden relative" style={{ background: 'var(--color-surface)' }}>
       <StarField />
-      <SectionMoon side="right" />
       <div className="max-w-6xl mx-auto px-6 relative z-10">
         <motion.div
           className="text-center mb-14"

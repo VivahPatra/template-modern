@@ -5,7 +5,6 @@ import { useWeddingData } from '@/context/WeddingDataContext'
 import { fadeUp, staggerContainer } from '@/lib/animations'
 import StarDivider from '@/components/ui/StarDivider'
 import StarField from '@/components/ui/StarField'
-import SectionMoon from '@/components/ui/SectionMoon'
 
 function getTimeLeft(target: Date) {
   const diff = Math.max(0, target.getTime() - Date.now())
@@ -36,7 +35,6 @@ export default function CountdownSection() {
   return (
     <section id="countdown" className="py-28 px-6 relative overflow-hidden" style={{ background: 'var(--color-bg)' }}>
       <StarField />
-      <SectionMoon side="right" />
       <div className="max-w-4xl mx-auto relative z-10">
         <motion.div className="text-center mb-14" variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }}>
           <motion.p variants={fadeUp} className="font-sans text-xs tracking-[0.4em] uppercase mb-4 glow-pulse" style={{ color: 'var(--color-accent)', opacity: 0.7 }}>

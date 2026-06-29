@@ -4,14 +4,12 @@ import { formatShortDate } from '@/lib/utils'
 import { useWeddingData } from '@/context/WeddingDataContext'
 import StarDivider from '@/components/ui/StarDivider'
 import CelestialBg from '@/components/ui/CelestialBg'
-import SectionMoon from '@/components/ui/SectionMoon'
 
 export default function FooterSection() {
   const weddingData = useWeddingData()
   return (
     <footer id="footer" className="py-20 px-6 text-center relative overflow-hidden" style={{ background: 'var(--color-surface2)' }}>
       <CelestialBg />
-      <SectionMoon side="left" />
       <div className="max-w-2xl mx-auto relative z-10">
         <StarDivider className="mb-10" />
 

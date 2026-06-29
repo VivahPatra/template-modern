@@ -5,7 +5,6 @@ import { formatShortDate } from '@/lib/utils'
 import { fadeUp, scaleIn, staggerContainer } from '@/lib/animations'
 import StarDivider from '@/components/ui/StarDivider'
 import CelestialBg from '@/components/ui/CelestialBg'
-import SectionMoon from '@/components/ui/SectionMoon'
 import CelestialCorner from '@/components/ui/CelestialCorner'
 
 export default function InvitationSection() {
@@ -13,7 +12,6 @@ export default function InvitationSection() {
   return (
     <section id="invitation" className="py-28 px-6 relative overflow-hidden" style={{ background: 'var(--color-surface)' }}>
       <CelestialBg />
-      <SectionMoon side="right" />
       <div className="max-w-3xl mx-auto relative z-10">
         <motion.div
           className="text-center mb-14"

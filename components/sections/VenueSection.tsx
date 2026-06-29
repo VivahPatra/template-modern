@@ -4,7 +4,6 @@ import { useWeddingData } from '@/context/WeddingDataContext'
 import { fadeUp, scaleIn, staggerContainer } from '@/lib/animations'
 import { formatShortDate } from '@/lib/utils'
 import CelestialBg from '@/components/ui/CelestialBg'
-import SectionMoon from '@/components/ui/SectionMoon'
 import StarDivider from '@/components/ui/StarDivider'
 import CelestialCorner from '@/components/ui/CelestialCorner'
 
@@ -13,7 +12,6 @@ export default function VenueSection() {
   return (
     <section id="venue" className="py-28 px-6 relative overflow-hidden" style={{ background: 'var(--color-surface2)' }}>
       <CelestialBg />
-      <SectionMoon side="left" />
       <div className="max-w-4xl mx-auto relative z-10">
         <motion.div className="text-center mb-14" variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }}>
           <motion.p variants={fadeUp} className="font-sans text-xs tracking-[0.4em] uppercase mb-4 glow-pulse" style={{ color: 'var(--color-accent)', opacity: 0.7 }}>
