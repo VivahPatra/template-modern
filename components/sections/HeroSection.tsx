@@ -222,7 +222,7 @@ export default function HeroSection() {
         </motion.p>
 
         <motion.div variants={fadeUp} className="mb-4">
-          <h1 className="font-display leading-none shimmer-text" style={{ fontSize: 'clamp(1.8rem, 6vw, 4rem)', letterSpacing: '0.02em', textShadow: '0 0 20px rgba(0,0,0,0.6)', wordBreak: 'break-word' as const }}>
+          <h1 className="font-display shimmer-text" style={{ fontSize: 'clamp(1.6rem, 5.5vw, 3.5rem)', lineHeight: 1.2, letterSpacing: '0.02em', textShadow: '0 0 20px rgba(0,0,0,0.6)', wordBreak: 'break-word' as const, padding: '0.1em 0' }}>
             {weddingData.groomName}
           </h1>
           <div className="flex items-center justify-center gap-6 my-3">
@@ -230,7 +230,7 @@ export default function HeroSection() {
             <span className="font-sans text-xs tracking-[0.4em] uppercase" style={{ color: 'var(--color-accent)' }}>&amp;</span>
             <div className="h-px w-16 md:w-28" style={{ background: 'linear-gradient(to left, transparent, var(--color-accent))' }} />
           </div>
-          <h1 className="font-display leading-none shimmer-text" style={{ fontSize: 'clamp(1.8rem, 6vw, 4rem)', letterSpacing: '0.02em', textShadow: '0 0 20px rgba(0,0,0,0.6)', wordBreak: 'break-word' as const }}>
+          <h1 className="font-display shimmer-text" style={{ fontSize: 'clamp(1.6rem, 5.5vw, 3.5rem)', lineHeight: 1.2, letterSpacing: '0.02em', textShadow: '0 0 20px rgba(0,0,0,0.6)', wordBreak: 'break-word' as const, padding: '0.1em 0' }}>
             {weddingData.brideName}
           </h1>
         </motion.div>
