@@ -1,5 +1,4 @@
 'use client'
-import { motion } from 'framer-motion'
 import { formatShortDate } from '@/lib/utils'
 import { useWeddingData } from '@/context/WeddingDataContext'
 import StarDivider from '@/components/ui/StarDivider'

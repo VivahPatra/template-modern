@@ -1,7 +1,5 @@
 'use client'
-import { motion } from 'framer-motion'
 import { useWeddingData } from '@/context/WeddingDataContext'
-import { fadeUp, slideLeft, slideRight, staggerContainer } from '@/lib/animations'
 import StarDivider from '@/components/ui/StarDivider'
 import StarField from '@/components/ui/StarField'
 
@@ -11,15 +9,15 @@ export default function CoupleStory() {
     <section id="story" className="py-28 px-6 relative overflow-hidden" style={{ background: 'var(--color-surface)' }}>
       <StarField />
       <div className="max-w-5xl mx-auto relative z-10">
-        <motion.div className="text-center mb-14" variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }}>
-          <motion.p variants={fadeUp} className="font-sans text-xs tracking-[0.4em] uppercase mb-4 glow-pulse" style={{ color: 'var(--color-accent)', opacity: 0.7 }}>
+        <div className="text-center mb-14">
+          <p className="font-sans text-xs tracking-[0.4em] uppercase mb-4" style={{ color: 'var(--color-accent)', opacity: 0.7 }}>
             ✦ &nbsp; Their Journey &nbsp; ✦
-          </motion.p>
-          <motion.h2 variants={fadeUp} className="font-display shimmer-text" style={{ fontSize: 'clamp(2.2rem, 5vw, 3.5rem)' }}>
+          </p>
+          <h2 className="font-display shimmer-text" style={{ fontSize: 'clamp(2.2rem, 5vw, 3.5rem)' }}>
             Our <em>Story</em>
-          </motion.h2>
+          </h2>
           <StarDivider className="mt-6" />
-        </motion.div>
+        </div>
 
         <div className="relative">
           {/* Vertical constellation line */}
@@ -29,26 +27,20 @@ export default function CoupleStory() {
             {weddingData.coupleStory.map((milestone, idx) => {
               const isLeft = idx % 2 === 0
               return (
-                <motion.div
+                <div
                   key={idx}
                   className="relative grid md:grid-cols-2 gap-8 items-center"
-                  variants={isLeft ? slideLeft : slideRight}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true, amount: 0.3 }}
                 >
                   <div className={`${isLeft ? 'md:text-right md:pr-12' : 'md:order-2 md:pl-12'}`}>
                     {milestone.image && (
-                      <motion.div
+                      <div
                         data-cursor-glow
                         className="relative mb-5 rounded-xl overflow-hidden"
                         style={{ height: 220, border: '1px solid var(--color-border)' }}
-                        whileHover={{ boxShadow: '0 0 40px rgba(160,128,200,0.2)' }}
-                        transition={{ duration: 0.3 }}
                       >
                         <img src={milestone.image} alt={milestone.title} loading="lazy" className="w-full h-full object-cover" style={{ filter: 'brightness(0.75) saturate(0.85)' }} />
                         <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, transparent 50%, var(--color-surface) 100%)' }} />
-                      </motion.div>
+                      </div>
                     )}
                     <p className="font-sans text-xs tracking-widest uppercase mb-2" style={{ color: 'var(--color-accent)', opacity: 0.65 }}>{milestone.date}</p>
                     <h3 className="font-display text-2xl mb-2 glow-text" style={{ color: 'var(--color-accent)' }}>{milestone.title}</h3>
@@ -58,11 +50,9 @@ export default function CoupleStory() {
                   {/* Timeline star node */}
                   <div className={`hidden md:flex items-center justify-center ${isLeft ? 'order-2' : 'order-1'}`}>
                     <div className="relative flex items-center justify-center">
-                      <motion.div
+                      <div
                         className="absolute rounded-full"
                         style={{ width: 60, height: 60, border: '1px solid var(--color-accent2)', opacity: 0.2 }}
-                        animate={{ scale: [1, 1.3, 1], opacity: [0.2, 0.4, 0.2] }}
-                        transition={{ repeat: Infinity, duration: 3, delay: idx * 0.5 }}
                       />
                       <div className="w-12 h-12 rounded-full flex items-center justify-center text-2xl" style={{ background: 'var(--color-surface2)', border: '1px solid var(--color-border-strong)', boxShadow: '0 0 20px rgba(160,128,200,0.1)' }}>
                         {milestone.icon}
@@ -76,7 +66,7 @@ export default function CoupleStory() {
                     </div>
                     <div className="h-px flex-1" style={{ background: 'var(--color-border)' }} />
                   </div>
-                </motion.div>
+                </div>
               )
             })}
           </div>

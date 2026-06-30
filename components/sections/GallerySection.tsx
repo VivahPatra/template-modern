@@ -1,9 +1,7 @@
 'use client'
 import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
 import { X } from 'lucide-react'
 import { useWeddingData } from '@/context/WeddingDataContext'
-import { fadeUp, scaleIn, staggerContainer } from '@/lib/animations'
 import StarDivider from '@/components/ui/StarDivider'
 import StarField from '@/components/ui/StarField'
 
@@ -21,17 +19,14 @@ export default function GallerySection() {
     <section id="gallery" className="py-28 overflow-hidden relative" style={{ background: 'var(--color-surface)' }}>
       <StarField />
       <div className="max-w-6xl mx-auto px-6 relative z-10">
-        <motion.div
-          className="text-center mb-14"
-          variants={staggerContainer} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }}
-        >
-          <motion.p variants={fadeUp} className="font-sans text-xs tracking-[0.4em] uppercase mb-4 glow-pulse"
-            style={{ color: 'var(--color-accent)', opacity: 0.7 }}>✦ &nbsp; Starlit Moments &nbsp; ✦</motion.p>
-          <motion.h2 variants={fadeUp} className="font-display shimmer-text" style={{ fontSize: 'clamp(2.2rem, 5vw, 3.5rem)' }}>
+        <div className="text-center mb-14">
+          <p className="font-sans text-xs tracking-[0.4em] uppercase mb-4"
+            style={{ color: 'var(--color-accent)', opacity: 0.7 }}>✦ &nbsp; Starlit Moments &nbsp; ✦</p>
+          <h2 className="font-display shimmer-text" style={{ fontSize: 'clamp(2.2rem, 5vw, 3.5rem)' }}>
             Our <em>Gallery</em>
-          </motion.h2>
+          </h2>
           <StarDivider className="mt-6" />
-        </motion.div>
+        </div>
       </div>
 
       {/* Horizontal filmstrip — auto-scrolling */}
@@ -78,32 +73,28 @@ export default function GallerySection() {
 
 
       {/* Lightbox */}
-      <AnimatePresence>
-        {selected && (
-          <motion.div
-            className="fixed inset-0 z-[100] flex items-center justify-center p-4"
-            style={{ background: 'rgba(8,15,26,0.95)' }}
-            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+      {selected && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center p-4"
+          style={{ background: 'rgba(8,15,26,0.95)' }}
+          onClick={() => setSelected(null)}
+        >
+          <img
+            src={selected}
+            alt=""
+            className="max-w-full max-h-full rounded-xl object-contain"
+            style={{ border: '1px solid var(--color-border-strong)', boxShadow: '0 0 60px rgba(200,146,42,0.2)' }}
+            onClick={(e) => e.stopPropagation()}
+          />
+          <button
             onClick={() => setSelected(null)}
+            className="absolute top-6 right-6 w-10 h-10 rounded-full flex items-center justify-center"
+            style={{ background: 'var(--color-surface)', border: '1px solid var(--color-border)', color: 'var(--color-accent)' }}
           >
-            <motion.img
-              src={selected}
-              alt=""
-              className="max-w-full max-h-full rounded-xl object-contain"
-              style={{ border: '1px solid var(--color-border-strong)', boxShadow: '0 0 60px rgba(200,146,42,0.2)' }}
-              initial={{ scale: 0.85, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.85, opacity: 0 }}
-              onClick={(e) => e.stopPropagation()}
-            />
-            <button
-              onClick={() => setSelected(null)}
-              className="absolute top-6 right-6 w-10 h-10 rounded-full flex items-center justify-center"
-              style={{ background: 'var(--color-surface)', border: '1px solid var(--color-border)', color: 'var(--color-accent)' }}
-            >
-              <X size={18} />
-            </button>
-          </motion.div>
-        )}
-      </AnimatePresence>
+            <X size={18} />
+          </button>
+        </div>
+      )}
     </section>
   )
 }

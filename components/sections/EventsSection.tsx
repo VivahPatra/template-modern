@@ -1,10 +1,8 @@
 'use client'
-import { motion } from 'framer-motion'
 import StarDivider from '@/components/ui/StarDivider'
 import CelestialBg from '@/components/ui/CelestialBg'
 import { useWeddingData } from '@/context/WeddingDataContext'
 import type { WeddingEvent } from '@/types/wedding.types'
-import { fadeUp, staggerContainer } from '@/lib/animations'
 
 function EventNode({
   event,
@@ -20,13 +18,9 @@ function EventNode({
   const mapUrl = `https://maps.google.com/?q=${encodeURIComponent(event.venue + ', ' + event.venueAddress)}`
 
   return (
-    <motion.article
+    <article
       data-cursor-glow
       className="flex flex-col items-center group"
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-60px' }}
-      transition={{ duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] }}
     >
       <div className="relative" style={{ width: circleSize, height: circleSize }}>
         {/* Base glow halo */}
@@ -122,7 +116,7 @@ function EventNode({
           📍 Get Directions
         </a>
       </div>
-    </motion.article>
+    </article>
   )
 }
 
@@ -138,31 +132,25 @@ export default function EventsSection() {
       <CelestialBg />
       <div className="max-w-5xl mx-auto relative z-10">
         {/* Heading */}
-        <motion.div
+        <div
           className="text-center mb-16"
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
         >
-          <motion.p
-            variants={fadeUp}
-            className="font-sans text-xs tracking-[0.4em] uppercase mb-4 glow-pulse"
+          <p
+            className="font-sans text-xs tracking-[0.4em] uppercase mb-4"
             style={{ color: 'var(--color-accent)', opacity: 0.7 }}
           >
             ✦ &nbsp; Celestial Celebrations &nbsp; ✦
-          </motion.p>
-          <motion.h2
-            variants={fadeUp}
+          </p>
+          <h2
             className="font-display shimmer-text"
             style={{ fontSize: 'clamp(2.2rem, 5vw, 3.5rem)' }}
           >
             Our <em>Events</em>
-          </motion.h2>
-          <motion.div variants={fadeUp}>
+          </h2>
+          <div>
             <StarDivider className="mt-6" />
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
 
         {/* Event grid */}
         <div className="relative">
