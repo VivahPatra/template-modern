@@ -18,6 +18,7 @@ interface EditorEvent {
   description?: string
   image?: string
   color: string
+  hidden?: boolean
 }
 
 interface EditorStoryItem {
@@ -101,6 +102,7 @@ function mapEditorToConfig(d: EditorPayload): WeddingConfig {
           image: e.image || undefined,
           color: e.color,
           description: e.description,
+          hidden: e.hidden,
         }))
       : defaultData.events,
     galleryImages: d.galleryImages && d.galleryImages.length > 0
