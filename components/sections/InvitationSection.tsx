@@ -51,7 +51,7 @@ export default function InvitationSection() {
               <line x1="160" y1="6" x2="280" y2="6" stroke="var(--color-accent)" strokeWidth="0.6" opacity="0.3" />
             </svg>
 
-            <h3 className="shimmer-text font-display" style={{ fontSize: 'clamp(2.5rem, 7vw, 4.5rem)', lineHeight: 1 }}>
+            <h3 className="shimmer-text font-display" style={{ fontSize: 'clamp(2.2rem, 6vw, 3.7rem)', lineHeight: 1.2, padding: '0.1em 0' }}>
               {weddingData.groomName}
             </h3>
             {weddingData.groomParents && (
@@ -60,7 +60,7 @@ export default function InvitationSection() {
               </p>
             )}
             <p className="font-serif italic text-xl mt-2 mb-2" style={{ color: 'var(--color-accent)', opacity: 0.65 }}>&amp;</p>
-            <h3 className="shimmer-text font-display" style={{ fontSize: 'clamp(2.5rem, 7vw, 4.5rem)', lineHeight: 1 }}>
+            <h3 className="shimmer-text font-display" style={{ fontSize: 'clamp(2.2rem, 6vw, 3.7rem)', lineHeight: 1.2, padding: '0.1em 0' }}>
               {weddingData.brideName}
             </h3>
             {weddingData.brideParents && (
