@@ -33,7 +33,6 @@ export default function HeroSection() {
   const mountain1Y = useTransform(scrollYProgress, [0, 1], ['0%', '-12%'])
   const mountain2Y = useTransform(scrollYProgress, [0, 1], ['0%', '-7%'])
 
-  const moonRotate = useTransform(scrollYProgress, [0, 1], [0, 180])
   const moonBrightness = useTransform(scrollYProgress, [0, 1], [0.6, 1.3])
   const moonBrightnessFilter = useTransform(moonBrightness, v => `brightness(${v}) drop-shadow(0 0 ${20 * v}px rgba(220,230,255,0.9)) drop-shadow(0 0 ${40 * v}px rgba(200,210,255,0.5))`)
   const moonGlow = useTransform(scrollYProgress, [0, 0.5, 1], [0.3, 0.7, 1])
@@ -177,9 +176,10 @@ export default function HeroSection() {
           style={{
             width: 'clamp(60px, 12vw, 180px)',
             height: 'clamp(60px, 12vw, 180px)',
-            rotate: moonRotate,
             filter: moonBrightnessFilter,
           }}
+          animate={{ rotate: 360 }}
+          transition={{ repeat: Infinity, duration: 25, ease: 'linear' }}
         />
       </div>
 
