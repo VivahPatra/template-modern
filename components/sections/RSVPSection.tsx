@@ -1,13 +1,32 @@
 'use client'
+import { useState, useEffect } from 'react'
 import { MessageCircle } from 'lucide-react'
 import { useWeddingData } from '@/context/WeddingDataContext'
 import StarDivider from '@/components/ui/StarDivider'
 import StarField from '@/components/ui/StarField'
 import CelestialCorner from '@/components/ui/CelestialCorner'
+import RSVPModal from '@/components/ui/RSVPModal'
+import PartyConfetti from '@/components/ui/PartyConfetti'
 
 export default function RSVPSection() {
   const weddingData = useWeddingData()
-  const whatsapp = `https://wa.me/${weddingData.rsvp.whatsappNumber}?text=${encodeURIComponent(weddingData.rsvp.message)}`
+  const [modalOpen, setModalOpen] = useState(false)
+  const [responded, setResponded] = useState(false)
+  const [showConfetti, setShowConfetti] = useState(false)
+
+  useEffect(() => {
+    if (localStorage.getItem('rsvp-responded') === 'true') setResponded(true)
+  }, [])
+
+  const handleSend = (guestCount: number, fullMessage: string) => {
+    const whatsapp = `https://wa.me/${weddingData.rsvp.whatsappNumber}?text=${encodeURIComponent(fullMessage)}`
+    window.open(whatsapp, '_blank')
+    setModalOpen(false)
+    setResponded(true)
+    setShowConfetti(true)
+    localStorage.setItem('rsvp-responded', 'true')
+    setTimeout(() => setShowConfetti(false), 3000)
+  }
 
   return (
     <section id="rsvp" className="py-28 px-6 relative overflow-hidden" style={{ background: 'var(--color-surface)' }}>
@@ -40,25 +59,49 @@ export default function RSVPSection() {
           <CelestialCorner size={52} flip={{ y: true }} className="absolute bottom-0 left-0" />
           <CelestialCorner size={52} flip={{ x: true, y: true }} className="absolute bottom-0 right-0" />
 
-          <p className="font-serif text-base leading-relaxed mb-3" style={{ color: 'var(--color-muted)' }}>
-            {weddingData.rsvpText || 'We joyfully request the honour of your presence at our wedding celebration.'}
-          </p>
-          <p className="font-sans text-sm mb-8" style={{ color: 'var(--color-accent)', opacity: 0.7 }}>
-            Please RSVP by {weddingData.rsvpDeadline || weddingData.rsvp.deadline}
-          </p>
+          {showConfetti && <PartyConfetti />}
 
-          <div className="flex justify-center">
-            <a
-              href={whatsapp}
-              target="_blank" rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-3 px-8 py-3.5 rounded-full font-sans text-sm font-semibold tracking-wider hover:scale-105 transition-transform"
-              style={{ background: 'var(--color-accent)', color: '#050412', boxShadow: '0 0 24px rgba(212,192,144,0.4)' }}
-            >
-              <MessageCircle size={16} /> RSVP via WhatsApp
-            </a>
-          </div>
+          {responded ? (
+            <>
+              <div className="text-5xl mb-4">🎉</div>
+              <h3 className="font-display shimmer-text mb-3" style={{ fontSize: '2rem', lineHeight: 1.4, padding: '0.1em 0' }}>
+                Thank You!
+              </h3>
+              <p className="font-serif text-base leading-relaxed" style={{ color: 'var(--color-muted)' }}>
+                Your RSVP has been sent. We can&apos;t wait to celebrate with you!
+              </p>
+            </>
+          ) : (
+            <>
+              <p className="font-serif text-base leading-relaxed mb-3" style={{ color: 'var(--color-muted)' }}>
+                {weddingData.rsvpText || 'We joyfully request the honour of your presence at our wedding celebration.'}
+              </p>
+              <p className="font-sans text-sm mb-8" style={{ color: 'var(--color-accent)', opacity: 0.7 }}>
+                Please RSVP by {weddingData.rsvpDeadline || weddingData.rsvp.deadline}
+              </p>
+
+              <div className="flex justify-center">
+                <button
+                  onClick={() => setModalOpen(true)}
+                  className="inline-flex items-center justify-center gap-3 px-8 py-3.5 rounded-full font-sans text-sm font-semibold tracking-wider hover:scale-105 transition-transform"
+                  style={{ background: 'var(--color-accent)', color: '#050412', boxShadow: '0 0 24px rgba(212,192,144,0.4)' }}
+                >
+                  <MessageCircle size={16} /> RSVP via WhatsApp
+                </button>
+              </div>
+            </>
+          )}
         </div>
       </div>
+
+      <RSVPModal
+        open={modalOpen}
+        onClose={() => setModalOpen(false)}
+        onSend={handleSend}
+        defaultMessage={weddingData.rsvp.message}
+        brideName={weddingData.brideName}
+        groomName={weddingData.groomName}
+      />
     </section>
   )
 }
