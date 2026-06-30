@@ -43,7 +43,7 @@ export default function InvitationSection() {
 
           <div className="py-12 px-8 text-center" style={{ background: 'linear-gradient(135deg, var(--color-surface2), var(--color-surface))' }}>
             <div className="flex flex-col items-center mb-4">
-              <img src="/assets/ganesha.gif" alt="Ganesha" loading="lazy" className="w-16 h-16 mx-auto star-glow" style={{ filter: 'drop-shadow(0 0 15px rgba(212,192,144,0.8)) drop-shadow(0 0 30px rgba(212,192,144,0.5)) drop-shadow(0 0 60px rgba(160,128,200,0.4))' }} />
+              <img src="/assets/man4.webp" alt="" loading="lazy" className="w-16 h-16 mx-auto star-glow" style={{ filter: 'drop-shadow(0 0 15px rgba(212,192,144,0.8)) drop-shadow(0 0 30px rgba(212,192,144,0.5)) drop-shadow(0 0 60px rgba(160,128,200,0.4))' }} />
               <p className="font-sans text-[10px] tracking-[0.4em] uppercase mt-2" style={{ color: 'var(--color-muted)' }}>
                 {weddingData.invitationBlessing || 'Destined by the stars'}
               </p>

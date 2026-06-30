@@ -7,17 +7,12 @@ import { formatShortDate } from '@/lib/utils'
 
 const STARS = [
   { x: '5%', y: '8%', size: 2, dur: 3.2, delay: 0 },
-  { x: '20%', y: '5%', size: 2.5, dur: 2.8, delay: 0.3 },
   { x: '35%', y: '12%', size: 3, dur: 2.5, delay: 0.6 },
-  { x: '55%', y: '8%', size: 2, dur: 3.0, delay: 0.9 },
   { x: '70%', y: '6%', size: 2.5, dur: 2.6, delay: 0.4 },
-  { x: '85%', y: '10%', size: 2, dur: 3.4, delay: 1.0 },
   { x: '18%', y: '55%', size: 2, dur: 2.9, delay: 0.5 },
   { x: '75%', y: '60%', size: 2, dur: 3.3, delay: 0.8 },
   { x: '25%', y: '82%', size: 2.5, dur: 2.7, delay: 1.4 },
   { x: '80%', y: '78%', size: 2, dur: 3.1, delay: 0.9 },
-  { x: '50%', y: '88%', size: 1.5, dur: 3.5, delay: 0.3 },
-  { x: '40%', y: '72%', size: 1.5, dur: 3.6, delay: 1.0 },
 ]
 
 const CONSTELLATIONS = [
@@ -31,12 +26,12 @@ export default function HeroSection() {
   const ref = useRef<HTMLElement>(null)
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] })
 
-  const bgScale = useTransform(scrollYProgress, [0, 1], [1, 1.15])
-  const bgY     = useTransform(scrollYProgress, [0, 1], ['0%', '-8%'])
-  const textY   = useTransform(scrollYProgress, [0, 1], ['0%', '-30%'])
+  const bgScale = useTransform(scrollYProgress, [0, 1], [1, 1.06])
+  const bgY     = useTransform(scrollYProgress, [0, 1], ['0%', '-4%'])
+  const textY   = useTransform(scrollYProgress, [0, 1], ['0%', '-15%'])
   const opacity = useTransform(scrollYProgress, [0, 0.7], [1, 0])
-  const mountain1Y = useTransform(scrollYProgress, [0, 1], ['0%', '-25%'])
-  const mountain2Y = useTransform(scrollYProgress, [0, 1], ['0%', '-15%'])
+  const mountain1Y = useTransform(scrollYProgress, [0, 1], ['0%', '-12%'])
+  const mountain2Y = useTransform(scrollYProgress, [0, 1], ['0%', '-7%'])
 
   const moonX = useTransform(scrollYProgress, [0, 0.3, 0.6, 1], ['90%', '75%', '55%', '45%'])
   const moonArcY = useTransform(scrollYProgress, [0, 0.3, 0.6, 1], ['60%', '20%', '5%', '0%'])
@@ -151,14 +146,6 @@ export default function HeroSection() {
       {/* Bottom cloud border — no float on mobile */}
       <img src="/assets/layer2.webp" alt=""
         className="absolute inset-0 w-full h-full object-cover object-bottom pointer-events-none z-[7]" />
-
-      {/* Left corner cloud */}
-      <img src="/assets/leftlayer1.webp" alt=""
-        className="absolute inset-0 w-full h-full object-cover object-bottom pointer-events-none z-[8]" />
-
-      {/* Right corner cloud */}
-      <img src="/assets/rightlayer1.webp" alt=""
-        className="absolute inset-0 w-full h-full object-cover object-bottom pointer-events-none z-[8]" />
 
       {/* Moon rising in arc */}
       <motion.div
