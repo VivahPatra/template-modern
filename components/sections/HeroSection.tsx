@@ -52,6 +52,9 @@ export default function HeroSection() {
         }} />
       </motion.div>
 
+      {/* Structured art layers — capped width on desktop so portrait artwork doesn't stretch/crop */}
+      <div className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-full md:w-[640px] max-w-full pointer-events-none">
+
       {/* Cloud/constellation layer — no float on mobile */}
       <img src="/assets/layer3.webp" alt=""
         className="absolute inset-0 w-full h-full object-cover pointer-events-none z-[2]" />
@@ -146,6 +149,8 @@ export default function HeroSection() {
       {/* Bottom cloud border — no float on mobile */}
       <img src="/assets/layer2.webp" alt=""
         className="absolute inset-0 w-full h-full object-cover object-bottom pointer-events-none z-[7]" />
+
+      </div>
 
       {/* Moon rising in arc */}
       <motion.div
