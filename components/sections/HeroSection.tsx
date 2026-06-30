@@ -33,11 +33,10 @@ export default function HeroSection() {
   const mountain1Y = useTransform(scrollYProgress, [0, 1], ['0%', '-12%'])
   const mountain2Y = useTransform(scrollYProgress, [0, 1], ['0%', '-7%'])
 
-  const moonX = useTransform(scrollYProgress, [0, 0.3, 0.6, 1], ['90%', '75%', '55%', '45%'])
-  const moonArcY = useTransform(scrollYProgress, [0, 0.3, 0.6, 1], ['60%', '20%', '5%', '0%'])
-  const moonScale = useTransform(scrollYProgress, [0, 0.3, 0.6, 1], [1.0, 0.8, 0.6, 0.5])
-  const moonOpacity = useTransform(scrollYProgress, [0, 0.2, 0.6], [0, 1, 1])
-  const moonGlow = useTransform(scrollYProgress, [0, 0.3, 0.7], [0, 0.6, 1])
+  const moonRotate = useTransform(scrollYProgress, [0, 1], [0, 180])
+  const moonBrightness = useTransform(scrollYProgress, [0, 1], [0.6, 1.3])
+  const moonBrightnessFilter = useTransform(moonBrightness, v => `brightness(${v}) drop-shadow(0 0 ${20 * v}px rgba(220,230,255,0.9)) drop-shadow(0 0 ${40 * v}px rgba(200,210,255,0.5))`)
+  const moonGlow = useTransform(scrollYProgress, [0, 0.5, 1], [0.3, 0.7, 1])
   const bgBrightness = useTransform(scrollYProgress, [0, 0.3, 0.7], [0.5, 0.75, 1])
   const bgBrightnessFilter = useTransform(bgBrightness, v => `brightness(${v})`)
 
@@ -152,15 +151,8 @@ export default function HeroSection() {
 
       </div>
 
-      {/* Moon rising in arc */}
-      <motion.div
-        className="absolute pointer-events-none z-[9]"
-        style={{
-          left: moonX, top: moonArcY,
-          scale: moonScale, opacity: moonOpacity,
-          translateX: '-50%', translateY: '-50%',
-        }}
-      >
+      {/* Moon — fixed position, spins and brightens on scroll */}
+      <div className="absolute pointer-events-none z-[9]" style={{ right: '8%', top: '18%' }}>
         <motion.div
           className="absolute rounded-full hidden md:block"
           style={{
@@ -181,14 +173,15 @@ export default function HeroSection() {
             opacity: moonGlow,
           }}
         />
-        <img src="/assets/moon.webp" alt=""
+        <motion.img src="/assets/moon.webp" alt=""
           style={{
             width: 'clamp(60px, 12vw, 180px)',
             height: 'clamp(60px, 12vw, 180px)',
-            filter: 'drop-shadow(0 0 20px rgba(220,230,255,0.9)) drop-shadow(0 0 40px rgba(200,210,255,0.5))',
+            rotate: moonRotate,
+            filter: moonBrightnessFilter,
           }}
         />
-      </motion.div>
+      </div>
 
       {/* Subtle star border — hidden on mobile */}
       <div className="absolute inset-4 md:inset-8 pointer-events-none z-20 hidden md:block" aria-hidden>
