@@ -5,6 +5,23 @@ import CelestialBg from '@/components/ui/CelestialBg'
 import { useWeddingData } from '@/context/WeddingDataContext'
 import type { WeddingEvent } from '@/types/wedding.types'
 
+const FALLBACK_MAP: Record<string, string> = {
+  engagement: 'engagement', cocktail: 'engagement', roka: 'engagement',
+  mehendi: 'mehendi', henna: 'mehendi',
+  sangeet: 'sangeet', music: 'sangeet',
+  haldi: 'haldi',
+  wedding: 'wedding', ceremony: 'wedding', muhurtham: 'wedding', nikah: 'wedding',
+  reception: 'reception',
+}
+
+function localFallback(event: WeddingEvent): string {
+  const key = `${event.id} ${event.name}`.toLowerCase()
+  for (const [needle, file] of Object.entries(FALLBACK_MAP)) {
+    if (key.includes(needle)) return `/assets/events/${file}.webp`
+  }
+  return '/assets/events/wedding.webp'
+}
+
 function EventNode({
   event,
   isHero = false,
@@ -14,6 +31,8 @@ function EventNode({
   isHero?: boolean
   delay?: number
 }) {
+  const [src, setSrc] = useState(event.image)
+  const [triedFallback, setTriedFallback] = useState(false)
   const [imgError, setImgError] = useState(false)
   const color = event.color || 'var(--color-accent)'
   const circleSize = isHero ? 130 : 100
@@ -49,14 +68,21 @@ function EventNode({
         />
 
         {/* Image or emoji */}
-        {event.image && !imgError ? (
+        {src && !imgError ? (
           <img
-            src={event.image}
+            src={src}
             alt={event.name}
             className="absolute inset-0 object-contain"
             style={{ width: '100%', height: '100%', filter: 'brightness(1.2) saturate(1.1)' }}
             loading="lazy"
-            onError={() => setImgError(true)}
+            onError={() => {
+              if (!triedFallback) {
+                setTriedFallback(true)
+                setSrc(localFallback(event))
+              } else {
+                setImgError(true)
+              }
+            }}
           />
         ) : (
           <div
