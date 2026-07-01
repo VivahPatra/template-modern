@@ -1,7 +1,7 @@
 'use client'
 import { useState, useEffect } from 'react'
 import { MessageCircle } from 'lucide-react'
-import { useWeddingData } from '@/context/WeddingDataContext'
+import { useWeddingData, useIsPreview } from '@/context/WeddingDataContext'
 import StarDivider from '@/components/ui/StarDivider'
 import StarField from '@/components/ui/StarField'
 import CelestialCorner from '@/components/ui/CelestialCorner'
@@ -10,9 +10,11 @@ import PartyConfetti from '@/components/ui/PartyConfetti'
 
 export default function RSVPSection() {
   const weddingData = useWeddingData()
+  const isPreview = useIsPreview()
   const [modalOpen, setModalOpen] = useState(false)
   const [responded, setResponded] = useState(false)
   const [showConfetti, setShowConfetti] = useState(false)
+  const [showPurchaseAlert, setShowPurchaseAlert] = useState(false)
 
   useEffect(() => {
     if (localStorage.getItem('rsvp-responded') === 'true') setResponded(true)
@@ -82,7 +84,7 @@ export default function RSVPSection() {
 
               <div className="flex justify-center">
                 <button
-                  onClick={() => setModalOpen(true)}
+                  onClick={() => isPreview ? setShowPurchaseAlert(true) : setModalOpen(true)}
                   className="inline-flex items-center justify-center gap-3 px-8 py-3.5 rounded-full font-sans text-sm font-semibold tracking-wider hover:scale-105 transition-transform"
                   style={{ background: 'var(--color-accent)', color: '#050412', boxShadow: '0 0 24px rgba(212,192,144,0.4)' }}
                 >
@@ -102,6 +104,17 @@ export default function RSVPSection() {
         brideName={weddingData.brideName}
         groomName={weddingData.groomName}
       />
+
+      {showPurchaseAlert && (
+        <div className="fixed inset-0 z-[200] flex items-center justify-center p-4" style={{ background: 'rgba(0,0,0,0.7)', backdropFilter: 'blur(4px)' }} onClick={() => setShowPurchaseAlert(false)}>
+          <div className="rounded-2xl p-8 max-w-sm w-full text-center" style={{ background: 'var(--color-bg)', border: '1px solid var(--color-border)' }} onClick={e => e.stopPropagation()}>
+            <div className="text-4xl mb-4">🔒</div>
+            <h3 className="font-display text-xl mb-3" style={{ color: 'var(--color-text)' }}>Purchase Required</h3>
+            <p className="font-sans text-sm mb-6" style={{ color: 'var(--color-muted)' }}>You need to purchase this card to send RSVPs.</p>
+            <button onClick={() => setShowPurchaseAlert(false)} className="px-6 py-2.5 rounded-full font-sans text-sm font-semibold" style={{ background: 'var(--color-accent)', color: '#080f1a' }}>Close</button>
+          </div>
+        </div>
+      )}
     </section>
   )
 }
