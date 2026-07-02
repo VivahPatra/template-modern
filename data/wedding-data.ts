@@ -12,6 +12,7 @@ export const weddingData: WeddingConfig = {
     'In the city where we fell in love, we invite you to celebrate the beginning of our forever. Your presence will light up our evening.',
   heroImage: '/assets/background.webp',
 
+  backgroundMusic: 'https://vivahpatra.co/music/tumhi-dekho-na.mp3',
   events: [
     { id: 'cocktail', name: 'Cocktail Night', emoji: '🍸', date: 'March 13, 2027', time: '8:00 PM', venue: 'Skybar Lounge', venueAddress: 'Connaught Place, Delhi', image: '/assets/events/engagement.webp', color: '#3a8fd4', description: 'Craft cocktails and city lights.' },
     { id: 'mehendi', name: 'Mehendi', emoji: '🌿', date: 'March 14, 2027', time: '4:00 PM', venue: 'The Terrace Garden', venueAddress: 'Hauz Khas Village, Delhi', image: '/assets/events/mehendi.webp', color: '#c0a060', description: 'Henna, music and rooftop vibes.' },
